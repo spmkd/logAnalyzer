@@ -2,7 +2,6 @@ package main;
 
 import configuration.Configuration;
 import configuration.Log;
-import reader.Reader;
 import readers.ApplicationReader;
 
 public class MainClass {

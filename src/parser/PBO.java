@@ -17,7 +17,7 @@ import DataObjects.ErrorObject;
  * 
  * All possible parts of an errors are logged in ErrorObject
  * 
- * First line of the ERROR should be separated by several different part
+ * First line of the ERROR should be separated in several different parts
  */
 
 
@@ -43,14 +43,11 @@ public class PBO {
 	ArrayList<String> firstErrorLineParts = new ArrayList<String>();
 
 	public ErrorObject processObject(ArrayList<String> string) {
-		// TODO Auto-generated method stub
 		
 		//we get the first error line and split all parts into a StringArray
 		FirstErrorLine = string.get(0);
 		
 		firstErrorLineParts = splitFirstErrorLine(FirstErrorLine);
-		
-		//System.out.println(FirstErrorLine);
 		
 		return errorObject;
 	}
@@ -143,9 +140,7 @@ public class PBO {
 
 		//LogMSG This should be the last line before the exception is logged
 		
-		tempErrorLines.add(firstErrorLine2.substring(LOGThread+1));
-		
-		System.out.println(firstErrorLine2.length());
+		tempErrorLines.add(firstErrorLine2.substring(LOGThread+1));		
 		
 		return tempErrorLines;
 	}

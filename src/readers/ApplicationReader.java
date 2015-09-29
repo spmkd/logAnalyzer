@@ -79,7 +79,9 @@ public class ApplicationReader extends Reader{
 				}
 
 			}
-		} catch (Exception e) {System.out.println(e.getLocalizedMessage());}
+			br.close();
+		} catch (Exception e) {e.printStackTrace();}
+		
 	}
 	
 	public synchronized void subbmitMessage(ArrayList<String> bufferedLine, Log thisLog){
