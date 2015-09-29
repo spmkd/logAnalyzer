@@ -7,7 +7,7 @@ import configuration.Log;
 public class Parser {
 
 	public static void applicationParse(ArrayList<String> bufferedLine, Log thisLog){
-		
+		System.out.println(thisLog.getLabel());
 	}
 	
 }

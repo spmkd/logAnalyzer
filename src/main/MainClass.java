@@ -3,6 +3,7 @@ package main;
 import configuration.Configuration;
 import configuration.Log;
 import reader.Reader;
+import readers.ApplicationReader;
 
 public class MainClass {
 
@@ -27,7 +28,7 @@ public class MainClass {
 		
 		for (Log n : Configuration.allLogFiles){
 			
-			Reader worker = new Reader(n);
+			ApplicationReader worker = new ApplicationReader(n);
 			worker.start();
 			
 		}

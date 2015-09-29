@@ -40,6 +40,7 @@ public class ApplicationReader extends Reader{
 				if(line == null){
 					//in case there is no new data written in the log, pause the execution for 1 sec
 					Thread.sleep(1000);
+					System.out.println("need to sleep!");
                     continue;
 				}
 
@@ -69,7 +70,7 @@ public class ApplicationReader extends Reader{
 						//2. We need to put the previous objects for processing
 						//3. We clear the current ArrayList and after that we put the new line
 						//AllErrorObjects.add(pbo.processObject(BufferedLine));
-						Parser.applicationParse(BufferedLine,thisLog);
+						subbmitMessage(BufferedLine,thisLog);
 						BufferedLine.clear();
 						BufferedLine.add(line);
 
@@ -79,6 +80,12 @@ public class ApplicationReader extends Reader{
 
 			}
 		} catch (Exception e) {System.out.println(e.getLocalizedMessage());}
+	}
+	
+	public synchronized void subbmitMessage(ArrayList<String> bufferedLine, Log thisLog){
+		
+		Parser.applicationParse(bufferedLine, thisLog);
+		
 	}
 
 }
