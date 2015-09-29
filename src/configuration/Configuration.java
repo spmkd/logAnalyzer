@@ -89,7 +89,6 @@ public class Configuration {
 		// This function will replace all windows locations to a JAVA recognizable locations
 		
 		String l2 = location.replace("\\", "//");
-		System.out.println(l2);
 		
 		return l2;
 	}
