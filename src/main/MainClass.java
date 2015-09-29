@@ -2,12 +2,13 @@ package main;
 
 import configuration.Configuration;
 import configuration.Log;
+import reader.Reader;
 
-public class main {
+public class MainClass {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		main LogAnalyzer = new main();
+		MainClass LogAnalyzer = new MainClass();
 		LogAnalyzer.start();
 	}
 
@@ -26,7 +27,8 @@ public class main {
 		
 		for (Log n : Configuration.allLogFiles){
 			
-			
+			Reader worker = new Reader(n);
+			worker.start();
 			
 		}
 		

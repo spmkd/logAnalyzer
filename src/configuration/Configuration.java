@@ -2,11 +2,8 @@ package configuration;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.annotation.Resource;
 
 public class Configuration {
 	
