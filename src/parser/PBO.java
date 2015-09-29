@@ -42,18 +42,16 @@ public class PBO {
 	ArrayList<String> SystemAndRequest = new ArrayList<String>();
 	ArrayList<String> firstErrorLineParts = new ArrayList<String>();
 
-	public ErrorObject processObject(ArrayList<String> string) {
+	public ErrorObject processObject(ArrayList<String> completeErrorStack) {
 		
 		//we get the first error line and split all parts into a StringArray
-		FirstErrorLine = string.get(0);
-		
+		FirstErrorLine = completeErrorStack.get(0);
 		firstErrorLineParts = splitFirstErrorLine(FirstErrorLine);
 		
 		return errorObject;
 	}
 
 	private ArrayList<String> splitFirstErrorLine(String firstErrorLine2) {
-		// TODO Auto-generated method stub
 		
 		ArrayList<String> tempErrorLines = new ArrayList<String>();
 		
