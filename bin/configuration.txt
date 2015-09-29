@@ -11,3 +11,5 @@
 #
 #################################################################
 C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2015-09-27.log,F,Error log for test,C,[
+C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2015-09-27-2.log,F,Error log,O,[
+C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2015-09-27.1.log,F,Error Log,O,[

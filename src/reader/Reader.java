@@ -6,12 +6,8 @@ public class Reader extends Thread {
 	
 	Log thisLog;
 	
-	public Reader(Log a) {
-		this.thisLog = a;
-	}
-
-	public void run() {
-		System.out.println("WORKIIING!");
+	public Reader(Log log) {
+		this.thisLog = log;
 	}
 	
 }
