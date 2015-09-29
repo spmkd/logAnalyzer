@@ -1,6 +1,7 @@
 package main;
 
 import configuration.Configuration;
+import configuration.Log;
 
 public class main {
 
@@ -14,7 +15,20 @@ public class main {
 		// TODO Auto-generated method stub
 		
 		Configuration.readConfigurationFile();
-		Configuration.parseLogLines();
+		Configuration.fillAllLogfiles();
+		
+		this.LoadAllReaderClasses();
+
+	}
+
+	private void LoadAllReaderClasses() {
+		// TODO Auto-generated method stub
+		
+		for (Log n : Configuration.allLogFiles){
+			
+			
+			
+		}
 		
 	}
 

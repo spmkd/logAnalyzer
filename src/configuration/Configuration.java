@@ -45,14 +45,15 @@ public class Configuration {
 	// parseLogLines			- Takes each entry in the rawLogLines , separates them in a temp StringArray so that we can check
 	//							whether all information is present and directory structure is correct
 	
-	public static void parseLogLines(){
+	public static void fillAllLogfiles(){
 		
 		String[] separated;
 		
 		String 	Location; 			// The full path of the directory or file (win/unix/anything)
 		char 	DirectoryOrFile;	// we put F(ile) or D(irectory) depending we want a single file or all files
 		String 	Label;				// a meaningful description of the file. In case it is a directory, an increment at the end of the lable will be used
-		char	Type;				// Continuous (C) or OneTimeRead (O)	
+		char	Type;				// Continuous (C) or OneTimeRead (O)
+		char	Separator;
 		
 		for (String i : rawLogLines){
 			
@@ -65,10 +66,11 @@ public class Configuration {
 			DirectoryOrFile = separated[1].charAt(0);
 			Label = separated[2];
 			Type = separated[3].charAt(0);
+			Separator = separated[4].charAt(0);
 
 			Location = fixLocation(Location);
 			
-			addToAllLogFiles(Location, DirectoryOrFile, Label, Type);
+			addToAllLogFiles(Location, DirectoryOrFile, Label, Type, Separator);
 		}
 		
 		
@@ -76,9 +78,9 @@ public class Configuration {
 	}
 
 
-	private static void addToAllLogFiles(String location, char directoryOrFile, String label, char type) {
+	private static void addToAllLogFiles(String location, char directoryOrFile, String label, char type, char separator) {
 
-		Log tempLog = new Log(location, label, directoryOrFile, type);
+		Log tempLog = new Log(location, directoryOrFile, label , type, separator);
 		
 		allLogFiles.add(tempLog);
 		

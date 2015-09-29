@@ -4,17 +4,19 @@ package configuration;
 
 public class Log {
 
-	public Log(String location, String label, char type, char directoryOrFile) {
+	public Log(String location, char directoryOrFile, String label, char type, char separator) {
 		Location = location;
+		DirectoryOrFile = directoryOrFile;
 		Label = label;
 		Type = type;
-		DirectoryOrFile = directoryOrFile;
+		Separator = separator;
 	}
 	
-	private String Location; // The location of the log directory or the file
-	private String Label; // Used for labeling the logs
-	private char DirectoryOrFile; // D - directory , F - file
-	private char Type; // True - Continuous , Fale - OneTimeRead
+	private String Location;		 // The location of the log directory or the file
+	private char DirectoryOrFile;	 // D - directory , F - file
+	private String Label;			 // Used for labeling the logs
+	private char Type; 				 // True - Continuous , Fale - OneTimeRead
+	private char Separator;			 // If it is empty, then it is new line (for access, syslog...). For Error logs it is usually [
 
 	public String getLocation() {
 		return Location;
@@ -46,6 +48,14 @@ public class Log {
 
 	public void setDirectoryOrFile(char directoryOrFile) {
 		DirectoryOrFile = directoryOrFile;
+	}
+
+	public char getSeparator() {
+		return Separator;
+	}
+
+	public void setSeparator(char separator) {
+		Separator = separator;
 	}
 
 }
