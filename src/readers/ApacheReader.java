@@ -1,6 +1,7 @@
-package reader;
+package readers;
 
 import configuration.Log;
+import reader.Reader;
 
 public class ApacheReader extends Reader{
 
