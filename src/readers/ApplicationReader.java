@@ -82,6 +82,8 @@ public class ApplicationReader extends Reader{
 			br.close();
 		} catch (Exception e) {e.printStackTrace();}
 		
+		System.out.println(this.getName() + " (label: " + thisLog.getLabel() + ") stopping!");
+		
 	}
 	
 	public synchronized void subbmitMessage(ArrayList<String> bufferedLine, Log thisLog){

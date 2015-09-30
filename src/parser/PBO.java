@@ -2,6 +2,7 @@ package parser;
 
 import java.util.ArrayList;
 
+import DataObjects.ErrorDate;
 import DataObjects.ErrorObject;
 
 
@@ -23,7 +24,7 @@ import DataObjects.ErrorObject;
 
 public class PBO {
 
-	ErrorObject errorObject;
+	ErrorObject errorObject = new ErrorObject();
 	
 	/*
 	 * We should separate the object into 3 parts:
@@ -62,83 +63,98 @@ public class PBO {
 		ClosedBracketInDate = firstErrorLine2.indexOf("]");
 		
 		tempErrorLines.add(firstErrorLine2.substring(OpenBracketInDate, ClosedBracketInDate));
+				ErrorDate eDate = new ErrorDate();
+		eDate.parseDateAndTime(firstErrorLine2.substring(OpenBracketInDate, ClosedBracketInDate));
+		errorObject.setErrorLogDate(eDate);
 		
 		//Put the type in the second one [ERROR, WARN, INFO]
 		
 		int EndOfType = firstErrorLine2.indexOf(" ", ClosedBracketInDate+2);
 		
 		tempErrorLines.add(firstErrorLine2.substring(ClosedBracketInDate+2, EndOfType));
+		errorObject.setType(firstErrorLine2.substring(ClosedBracketInDate+2, EndOfType));
 		
 		//Hostname
 		
 		int EndOfHostName = firstErrorLine2.indexOf(" ", EndOfType + 1);
 		
 		tempErrorLines.add(firstErrorLine2.substring(EndOfType+1, EndOfHostName));
-		
+		errorObject.setLocalServerName(firstErrorLine2.substring(EndOfType+1, EndOfHostName));
 		
 		//INSTANCE ES2, ES1
 		
 		int EndOfInstance = firstErrorLine2.indexOf(" ", EndOfHostName + 1);
 		
 		tempErrorLines.add(firstErrorLine2.substring(EndOfHostName+1, EndOfInstance));
+		errorObject.setServerInstance(firstErrorLine2.substring(EndOfHostName+1, EndOfInstance));
 		
 		//NODE appserver0, appserver1, appserver2
 		
 		int EndOfNode = firstErrorLine2.indexOf(" ", EndOfInstance + 1);
 		
 		tempErrorLines.add(firstErrorLine2.substring(EndOfInstance+1, EndOfNode));
+		errorObject.setServerNode(firstErrorLine2.substring(EndOfInstance+1, EndOfNode));
 		
 		//RequestSite
 		
 		int EndOfRequestSite = firstErrorLine2.indexOf("]", EndOfNode + 2);
 		
 		tempErrorLines.add(firstErrorLine2.substring(EndOfNode+2, EndOfRequestSite));
+		errorObject.setRequestSite(firstErrorLine2.substring(EndOfNode+2, EndOfRequestSite));
 		
 		//RequestApplication
 		
 		int EndOfRequestApplication = firstErrorLine2.indexOf("]", EndOfRequestSite + 3);
 		
 		tempErrorLines.add(firstErrorLine2.substring(EndOfRequestSite+3, EndOfRequestApplication));
+		errorObject.setRequestApplication(firstErrorLine2.substring(EndOfRequestSite+3, EndOfRequestApplication));
 		
 		//Logger
 		
 		int EndOfLogger = firstErrorLine2.indexOf(" ", EndOfRequestApplication + 2);
 		
 		tempErrorLines.add(firstErrorLine2.substring(EndOfRequestApplication+2, EndOfLogger));
+		errorObject.setLogger(firstErrorLine2.substring(EndOfRequestApplication+2, EndOfLogger));
 		
 		//Marker
 		
 		int Marker = firstErrorLine2.indexOf("]", EndOfLogger + 2);
 		
 		tempErrorLines.add(firstErrorLine2.substring(EndOfLogger+2, Marker));
-
+		errorObject.setMarker(firstErrorLine2.substring(EndOfLogger+2, Marker));
+		
 		//RequestType
 		
 		int RequestType = firstErrorLine2.indexOf("]", Marker + 2);
 		
 		tempErrorLines.add(firstErrorLine2.substring(Marker+3, RequestType));
+		errorObject.setRequestType(firstErrorLine2.substring(Marker+3, RequestType));
 		
 		//SessionId
 		
 		int SessionId = firstErrorLine2.indexOf("]", RequestType + 2);
 		
 		tempErrorLines.add(firstErrorLine2.substring(RequestType+3, SessionId));
+		errorObject.setSessionId(firstErrorLine2.substring(RequestType+3, SessionId));
 		
 		//RequestUUID
 		
 		int RequestUUID = firstErrorLine2.indexOf("]", SessionId + 2);
 		
 		tempErrorLines.add(firstErrorLine2.substring(SessionId+3, RequestUUID));
+		errorObject.setRequestUuid(firstErrorLine2.substring(SessionId+3, RequestUUID));
 		
 		//LOGThread
 		
 		int LOGThread = firstErrorLine2.indexOf("\"", RequestUUID + 3);
 		
 		tempErrorLines.add(firstErrorLine2.substring(RequestUUID+3, LOGThread));
+		errorObject.setThread(firstErrorLine2.substring(RequestUUID+3, LOGThread));
 
 		//LogMSG This should be the last line before the exception is logged
 		
-		tempErrorLines.add(firstErrorLine2.substring(LOGThread+1));		
+		tempErrorLines.add(firstErrorLine2.substring(LOGThread+1));
+		errorObject.setMsg(firstErrorLine2.substring(LOGThread+1));
 		
 		return tempErrorLines;
 	}
