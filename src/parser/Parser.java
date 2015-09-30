@@ -14,6 +14,7 @@ public class Parser {
 		
 		EO = pbo.processObject(bufferedLine);
 		
+		System.out.println("DoneForOne");
 	}
 	
 }

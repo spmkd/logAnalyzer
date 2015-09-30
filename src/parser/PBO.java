@@ -38,125 +38,160 @@ public class PBO {
 	 * The Additional Information starts when a line starts with -
 	 */
 	
-	String FirstErrorLine; //
-	//ArrayList<String> StackTrace = new ArrayList<String>();
 	ArrayList<String> SystemAndRequest = new ArrayList<String>();
-	ArrayList<String> firstErrorLineParts = new ArrayList<String>();
 
 	public ErrorObject processObject(ArrayList<String> completeErrorStack) {
 		
 		//we get the first error line and split all parts into a StringArray
-		FirstErrorLine = completeErrorStack.get(0);
-		firstErrorLineParts = splitFirstErrorLine(FirstErrorLine);
+		splitFirstErrorLine(completeErrorStack.get(0));
+		
+		checkForErrorStack(completeErrorStack);
+		checkForSystemInformation(completeErrorStack);
+		checkForRequestInfo(completeErrorStack);
+		checkForRequestParam(completeErrorStack);
 		
 		return errorObject;
 	}
 
-	private ArrayList<String> splitFirstErrorLine(String firstErrorLine2) {
+	private void checkForRequestParam(ArrayList<String> completeErrorStack) {
+
 		
-		ArrayList<String> tempErrorLines = new ArrayList<String>();
+	}
+
+	private void checkForRequestInfo(ArrayList<String> completeErrorStack) {
+
+		
+	}
+
+	private void checkForSystemInformation(ArrayList<String> completeErrorStack) {
+
+		
+	}
+
+	private void checkForErrorStack(ArrayList<String> completeErrorStack) {
+
+		/* Error stacks should start at the second line and end with an empty line
+		 * Error stack might not be present. As I have seen, all stacktraces start with:	at
+		 */
+		
+		String tempLine = new String();
+		
+		tempLine = completeErrorStack.get(1);
+		
+		if(!tempLine.startsWith("\tat")){
+			return;
+		}
+		
+		ArrayList<String> SB = new ArrayList<String>();
+		
+		SB.add(tempLine);
+		
+		for(int i=2; i<completeErrorStack.size(); i++){
+			
+			tempLine = completeErrorStack.get(i);
+			
+			if(tempLine.isEmpty()){
+				break;
+			}else{
+				SB.add(tempLine);
+			}
+			
+		}
+		
+		errorObject.setStackTrace(SB);
+		
+	}
+
+	private void splitFirstErrorLine(String firstErrorLine) {
 		
 		//The Date and Time between the brackets
 		//Assign it to the first in the ArrayList
 		int OpenBracketInDate = 1, ClosedBracketInDate;
 		
-		ClosedBracketInDate = firstErrorLine2.indexOf("]");
+		ClosedBracketInDate = firstErrorLine.indexOf("]");
 		
-		tempErrorLines.add(firstErrorLine2.substring(OpenBracketInDate, ClosedBracketInDate));
-				ErrorDate eDate = new ErrorDate();
-		eDate.parseDateAndTime(firstErrorLine2.substring(OpenBracketInDate, ClosedBracketInDate));
+		
+		ErrorDate eDate = new ErrorDate();
+		eDate.parseDateAndTime(firstErrorLine.substring(OpenBracketInDate, ClosedBracketInDate));
+		
 		errorObject.setErrorLogDate(eDate);
 		
 		//Put the type in the second one [ERROR, WARN, INFO]
 		
-		int EndOfType = firstErrorLine2.indexOf(" ", ClosedBracketInDate+2);
+		int EndOfType = firstErrorLine.indexOf(" ", ClosedBracketInDate+2);
 		
-		tempErrorLines.add(firstErrorLine2.substring(ClosedBracketInDate+2, EndOfType));
-		errorObject.setType(firstErrorLine2.substring(ClosedBracketInDate+2, EndOfType));
+		errorObject.setType(firstErrorLine.substring(ClosedBracketInDate+2, EndOfType));
 		
 		//Hostname
 		
-		int EndOfHostName = firstErrorLine2.indexOf(" ", EndOfType + 1);
+		int EndOfHostName = firstErrorLine.indexOf(" ", EndOfType + 1);
 		
-		tempErrorLines.add(firstErrorLine2.substring(EndOfType+1, EndOfHostName));
-		errorObject.setLocalServerName(firstErrorLine2.substring(EndOfType+1, EndOfHostName));
+		errorObject.setLocalServerName(firstErrorLine.substring(EndOfType+1, EndOfHostName));
 		
 		//INSTANCE ES2, ES1
 		
-		int EndOfInstance = firstErrorLine2.indexOf(" ", EndOfHostName + 1);
+		int EndOfInstance = firstErrorLine.indexOf(" ", EndOfHostName + 1);
 		
-		tempErrorLines.add(firstErrorLine2.substring(EndOfHostName+1, EndOfInstance));
-		errorObject.setServerInstance(firstErrorLine2.substring(EndOfHostName+1, EndOfInstance));
+		errorObject.setServerInstance(firstErrorLine.substring(EndOfHostName+1, EndOfInstance));
 		
 		//NODE appserver0, appserver1, appserver2
 		
-		int EndOfNode = firstErrorLine2.indexOf(" ", EndOfInstance + 1);
+		int EndOfNode = firstErrorLine.indexOf(" ", EndOfInstance + 1);
 		
-		tempErrorLines.add(firstErrorLine2.substring(EndOfInstance+1, EndOfNode));
-		errorObject.setServerNode(firstErrorLine2.substring(EndOfInstance+1, EndOfNode));
+		errorObject.setServerNode(firstErrorLine.substring(EndOfInstance+1, EndOfNode));
 		
 		//RequestSite
 		
-		int EndOfRequestSite = firstErrorLine2.indexOf("]", EndOfNode + 2);
+		int EndOfRequestSite = firstErrorLine.indexOf("]", EndOfNode + 2);
 		
-		tempErrorLines.add(firstErrorLine2.substring(EndOfNode+2, EndOfRequestSite));
-		errorObject.setRequestSite(firstErrorLine2.substring(EndOfNode+2, EndOfRequestSite));
+		errorObject.setRequestSite(firstErrorLine.substring(EndOfNode+2, EndOfRequestSite));
 		
 		//RequestApplication
 		
-		int EndOfRequestApplication = firstErrorLine2.indexOf("]", EndOfRequestSite + 3);
+		int EndOfRequestApplication = firstErrorLine.indexOf("]", EndOfRequestSite + 3);
 		
-		tempErrorLines.add(firstErrorLine2.substring(EndOfRequestSite+3, EndOfRequestApplication));
-		errorObject.setRequestApplication(firstErrorLine2.substring(EndOfRequestSite+3, EndOfRequestApplication));
+		errorObject.setRequestApplication(firstErrorLine.substring(EndOfRequestSite+3, EndOfRequestApplication));
 		
 		//Logger
 		
-		int EndOfLogger = firstErrorLine2.indexOf(" ", EndOfRequestApplication + 2);
+		int EndOfLogger = firstErrorLine.indexOf(" ", EndOfRequestApplication + 2);
 		
-		tempErrorLines.add(firstErrorLine2.substring(EndOfRequestApplication+2, EndOfLogger));
-		errorObject.setLogger(firstErrorLine2.substring(EndOfRequestApplication+2, EndOfLogger));
+		errorObject.setLogger(firstErrorLine.substring(EndOfRequestApplication+2, EndOfLogger));
 		
 		//Marker
 		
-		int Marker = firstErrorLine2.indexOf("]", EndOfLogger + 2);
+		int Marker = firstErrorLine.indexOf("]", EndOfLogger + 2);
 		
-		tempErrorLines.add(firstErrorLine2.substring(EndOfLogger+2, Marker));
-		errorObject.setMarker(firstErrorLine2.substring(EndOfLogger+2, Marker));
+		errorObject.setMarker(firstErrorLine.substring(EndOfLogger+2, Marker));
 		
 		//RequestType
 		
-		int RequestType = firstErrorLine2.indexOf("]", Marker + 2);
+		int RequestType = firstErrorLine.indexOf("]", Marker + 2);
 		
-		tempErrorLines.add(firstErrorLine2.substring(Marker+3, RequestType));
-		errorObject.setRequestType(firstErrorLine2.substring(Marker+3, RequestType));
+		errorObject.setRequestType(firstErrorLine.substring(Marker+3, RequestType));
 		
 		//SessionId
 		
-		int SessionId = firstErrorLine2.indexOf("]", RequestType + 2);
+		int SessionId = firstErrorLine.indexOf("]", RequestType + 2);
 		
-		tempErrorLines.add(firstErrorLine2.substring(RequestType+3, SessionId));
-		errorObject.setSessionId(firstErrorLine2.substring(RequestType+3, SessionId));
+		errorObject.setSessionId(firstErrorLine.substring(RequestType+3, SessionId));
 		
 		//RequestUUID
 		
-		int RequestUUID = firstErrorLine2.indexOf("]", SessionId + 2);
+		int RequestUUID = firstErrorLine.indexOf("]", SessionId + 2);
 		
-		tempErrorLines.add(firstErrorLine2.substring(SessionId+3, RequestUUID));
-		errorObject.setRequestUuid(firstErrorLine2.substring(SessionId+3, RequestUUID));
+		errorObject.setRequestUuid(firstErrorLine.substring(SessionId+3, RequestUUID));
 		
 		//LOGThread
 		
-		int LOGThread = firstErrorLine2.indexOf("\"", RequestUUID + 3);
+		int LOGThread = firstErrorLine.indexOf("\"", RequestUUID + 3);
 		
-		tempErrorLines.add(firstErrorLine2.substring(RequestUUID+3, LOGThread));
-		errorObject.setThread(firstErrorLine2.substring(RequestUUID+3, LOGThread));
+		errorObject.setThread(firstErrorLine.substring(RequestUUID+3, LOGThread));
 
 		//LogMSG This should be the last line before the exception is logged
 		
-		tempErrorLines.add(firstErrorLine2.substring(LOGThread+1));
-		errorObject.setMsg(firstErrorLine2.substring(LOGThread+1));
+		errorObject.setMsg(firstErrorLine.substring(LOGThread+1));
 		
-		return tempErrorLines;
 	}
 
 	

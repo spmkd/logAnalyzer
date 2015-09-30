@@ -13,6 +13,8 @@ public class ApplicationReader extends Reader{
 
 	public ApplicationReader(Log log) {
 		super(log);
+		
+		System.out.println(this.getName() + " (label: " + thisLog.getLabel() + ") starting!");
 	}
 	
 	public void run() {
@@ -76,6 +78,8 @@ public class ApplicationReader extends Reader{
 
 					}
 
+				}else{
+					BufferedLine.add(line);
 				}
 
 			}
