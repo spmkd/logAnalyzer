@@ -112,13 +112,13 @@ public class PBO {
 	private String printTempSplitContains(String message, String[] tempSplit) {
 		// TODO Auto-generated method stub
 		
-		System.out.print(message);
+//		System.out.print(message);
 		
 		for (String s : tempSplit){
-			System.out.print(" - " + s);
+//			System.out.print(" - " + s);
 		}
 		
-		System.out.println();
+//		System.out.println();
 		
 		return null;
 	}
@@ -270,6 +270,11 @@ public class PBO {
 		/* Error stacks should start at the second line and end with an empty line
 		 * Error stack might not be present. As I have seen, all stacktraces start with:	at
 		 */
+		
+		// here we check whether the Error is one line only. If it is, there is no stack or stuff
+		if (completeErrorStack.size()==1){
+			return;
+		}
 		
 		String tempLine = new String();
 		
