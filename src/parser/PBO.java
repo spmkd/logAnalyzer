@@ -2,8 +2,12 @@ package parser;
 
 import java.util.ArrayList;
 
-import DataObjects.ErrorDate;
-import DataObjects.ErrorObject;
+import dataObjects.ErrorDate;
+import dataObjects.ErrorObject;
+import dataObjects.RequestInformation;
+import dataObjects.RequestParameter;
+import dataObjects.RequestParameters;
+import dataObjects.SystemInformation;
 
 
 
@@ -37,8 +41,6 @@ public class PBO {
 	 * After that starts the Strack Trace
 	 * The Additional Information starts when a line starts with -
 	 */
-	
-	ArrayList<String> SystemAndRequest = new ArrayList<String>();
 
 	public ErrorObject processObject(ArrayList<String> completeErrorStack) {
 		
@@ -55,16 +57,211 @@ public class PBO {
 
 	private void checkForRequestParam(ArrayList<String> completeErrorStack) {
 
+		/* We will get the Request Parameters by going through the whole error stack
+		 * and checking if there is a field labeled: 
+		 * 
+		 * Request Parameters
+		 * ------------------
+		 */
 		
+		Integer theStartIndex;
+		
+		if ( (completeErrorStack.contains("Request Parameters")) &&  (completeErrorStack.contains("------------------")) ){
+			
+			theStartIndex = completeErrorStack.indexOf("Request Parameters");
+			RequestParameters tempReqParm = new RequestParameters();
+			
+			ArrayList<RequestParameter> tempParams = new ArrayList<RequestParameter>();
+			
+			// The First Line is the Title, second are the - and after that we start with the info.
+			// We need to split each line into two parts, separated by =
+			
+			for (int i=theStartIndex+2; i<completeErrorStack.size();i++){
+				
+				String check = completeErrorStack.get(i);
+
+				if (check.isEmpty()){
+					break;
+				}else{
+					
+					String[] tempSplit = check.split("=");
+					
+					// in case some parameter does not have a value, we need to set it to ""
+					
+					if(tempSplit.length==1){
+						
+						tempParams.add(new RequestParameter(tempSplit[0],""));
+						
+						continue;
+					}
+					
+					tempParams.add(new RequestParameter(tempSplit[0],tempSplit[1]));
+					
+				}
+				
+			}
+			
+			tempReqParm.setAllRequestParameter(tempParams);
+			
+			errorObject.setRequestParameters(tempReqParm);
+			
+		}
+		
+	}
+
+	private String printTempSplitContains(String message, String[] tempSplit) {
+		// TODO Auto-generated method stub
+		
+		System.out.print(message);
+		
+		for (String s : tempSplit){
+			System.out.print(" - " + s);
+		}
+		
+		System.out.println();
+		
+		return null;
 	}
 
 	private void checkForRequestInfo(ArrayList<String> completeErrorStack) {
 
+		/* We will get the Request information by going through the whole error stack
+		 * and checking if there is a field labeled: 
+		 * 
+		 * Request Information
+		 * ------------------
+		 */
+		
+		Integer theStartIndex;
+		
+		if ( (completeErrorStack.contains("Request Information")) &&  (completeErrorStack.contains("------------------")) ){
+			
+			theStartIndex = completeErrorStack.indexOf("Request Information");
+			RequestInformation tempReqInf = new RequestInformation();
+			
+			// The First Line is the Title, second are the - and after that we start with the info.
+			// We need to split each line into two parts, separated by :
+			
+			for (int i=theStartIndex+2; i<completeErrorStack.size();i++){
+				
+				String check = completeErrorStack.get(i);
+
+				if (check.isEmpty()){
+					break;
+				}else{
+					
+					String[] tempSplit = check.split(":");
+					
+					switch (tempSplit[0]) {
+					
+					case "URI":
+						tempReqInf.setURI(tempSplit[1].trim());
+						break;
+						
+					case "Method":
+						tempReqInf.setMethod(tempSplit[1].trim());
+						break;
+						
+					case "PathInfo":
+						tempReqInf.setPathInfo(tempSplit[1].trim());
+						break;
+						
+					case "QueryString":
+						tempReqInf.setQueryString(tempSplit[1].trim());
+						break;
+						
+					case "Remote Address":
+						tempReqInf.setRemoteAddress(tempSplit[1].trim());
+						break;
+					
+					default:
+						String message = "Unexpected Request Information";
+						printTempSplitContains(message,tempSplit);
+					
+					}
+					
+				}
+				
+			}
+			
+			errorObject.setRequestInformation(tempReqInf);
+			
+		}
 		
 	}
 
 	private void checkForSystemInformation(ArrayList<String> completeErrorStack) {
 
+		/* We will get the SYSTEM information by going through the whole error stack
+		 * and checking if there is a field labeled: 
+		 * 
+		 * System Information
+		 * ------------------
+		 */
+		
+		Integer theStartIndex;
+		
+		if ( (completeErrorStack.contains("System Information")) &&  (completeErrorStack.contains("------------------")) ){
+			
+			theStartIndex = completeErrorStack.indexOf("System Information");
+			SystemInformation tempSysInf = new SystemInformation();
+			
+			// The First Line is the Title, second are the - and after that we start with the info.
+			// We need to split each line into two parts, separated by :
+			
+			for (int i=theStartIndex+2; i<completeErrorStack.size();i++){
+				
+				String check = completeErrorStack.get(i);
+
+				if (check.isEmpty()){
+					break;
+				}else{
+					
+					String[] tempSplit = check.split(":");
+					
+					switch (tempSplit[0]) {
+					
+					case "RequestID":
+						tempSysInf.setRequestID(tempSplit[1].trim());
+						break;
+					
+					case "StartDate":
+						tempSysInf.setStartDate(tempSplit[1].trim() + ":" + tempSplit[2].trim() + ":" + tempSplit[3].trim());
+						break;
+						
+					case "SessionType":
+						tempSysInf.setSessionType(tempSplit[1].trim());
+						break;
+						
+					case "SessionID":
+						tempSysInf.setSessionID(tempSplit[1].trim());
+						break;
+						
+					case "UserID":
+						tempSysInf.setUserID(tempSplit[1].trim());
+						break;
+						
+					case "ServerName":
+						tempSysInf.setServerName(tempSplit[1].trim());
+						break;
+						
+					case "ServerPort":
+						tempSysInf.setServerPort(tempSplit[1].trim());
+						break;
+						
+					default:
+						String message = "Unexpected System Information";
+						printTempSplitContains(message,tempSplit);
+					
+					}
+					
+				}
+				
+			}
+			
+			errorObject.setSystemInformation(tempSysInf);
+			
+		}
 		
 	}
 

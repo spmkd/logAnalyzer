@@ -2,8 +2,8 @@ package parser;
 
 import java.util.ArrayList;
 
-import DataObjects.ErrorObject;
 import configuration.Log;
+import dataObjects.ErrorObject;
 
 public class Parser {
 
@@ -14,7 +14,6 @@ public class Parser {
 		
 		EO = pbo.processObject(bufferedLine);
 		
-		System.out.println("DoneForOne");
 	}
 	
 }
