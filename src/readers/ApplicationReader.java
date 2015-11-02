@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 import configuration.Log;
+import dataObjects.ErrorObject;
 import parser.Parser;
 import reader.Reader;
 
@@ -71,8 +72,9 @@ public class ApplicationReader extends Reader{
 						//1. This is when we receive a new line which should be a new entry
 						//2. We need to put the previous objects for processing
 						//3. We clear the current ArrayList and after that we put the new line
-						//AllErrorObjects.add(pbo.processObject(BufferedLine));
-						subbmitMessage(BufferedLine,thisLog);
+						
+						ErrorObject EO = parseMessage(BufferedLine,thisLog);
+						
 						BufferedLine.clear();
 						BufferedLine.add(line);
 
@@ -90,9 +92,9 @@ public class ApplicationReader extends Reader{
 		
 	}
 	
-	public synchronized void subbmitMessage(ArrayList<String> bufferedLine, Log thisLog){
+	public synchronized ErrorObject parseMessage(ArrayList<String> bufferedLine, Log thisLog){
 		
-		Parser.applicationParse(bufferedLine, thisLog);
+		return Parser.applicationParse(bufferedLine, thisLog);
 		
 	}
 

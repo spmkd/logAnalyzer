@@ -15,11 +15,22 @@ public class MainClass {
 	private void start() {
 		// TODO Auto-generated method stub
 		
-		Configuration.readConfigurationFile();
-		Configuration.fillAllLogfiles();
+		System.out.println("1.0 initialize...");
+		this.initialize();
 		
+		System.out.println("2.0 Start reading all logs...");
 		this.LoadAllReaderClasses();
 
+	}
+	
+	private void initialize(){
+
+		System.out.println("1.1 Read Configuration File...");
+		Configuration.readConfigurationFile();
+		
+		System.out.println("1.2 Put all configuration data into array...");
+		Configuration.fillAllLogfiles();
+		
 	}
 
 	private void LoadAllReaderClasses() {
