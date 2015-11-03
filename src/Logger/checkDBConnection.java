@@ -10,11 +10,13 @@ import java.util.logging.Logger;
 
 public class checkDBConnection {
 	
+    public static Connection con = null;
+    public static Statement st = null;
+    public static ResultSet rs = null;
+	
     public static void main(String[] args) {
 
-        Connection con = null;
-        Statement st = null;
-        ResultSet rs = null;
+
 
         String url = "jdbc:mysql://localhost:3306/testdb";
         String user = "testuser";

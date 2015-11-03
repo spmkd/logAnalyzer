@@ -1,42 +1,43 @@
 package dataObjects;
 
-import java.util.ArrayList;
-
 //In this class every Error Object will be stored
 //
 //This will be from the [DATE.... ends with the start of the next [
 
 public class ErrorObject {
 	
-	ErrorDate ErrorLogDate;					//2015-06-03 15:58:38.360 +0200CEST
-	String Type; 							//ERROR
-	String LocalServerName;					//jmbpapp12.jmbp.local
-	String ServerInstance;					//ES1, ES2
-	String ServerNode;						//appserver0, appserver1
-	String RequestSite;						//Jumbo-Grocery-Site
-	String RequestApplication;				//[mobile]
-	String Logger;							//com.intershop.beehive.core.internal.request.RequestHandlerServlet
-	String Marker;
-	String RequestType;						//Storefront
-	String SessionId;						//rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-	String RequestUuid;						//Nna6AVVuJwAaHGMK-1-01
-	String Thread;							//Nna6AVVuJwAaHGMK-1-01
-	String Msg;								//ISH-CORE-2351: Exception occurred during request processing:
-	ArrayList<String> StackTrace;			//Complete Track Trace
-	String UserId;							//jUMKYx4iDzgAAAFNdgxJ4rQq
-	String ServerName;						//www.jumbo.com
-	String ServerPort;						//80
-	String URI;								///servlet/Beehive/WFS/Jumbo-Grocery-Site/nl_NL/-/EUR/ViewPromotionDetailpage-Start
-	String Method;							//GET
-	String PathInfo;						///WFS/Jumbo-Grocery-Site/nl_NL/-/EUR/ViewPromotionDetailpage-Start
-	String QueryString;						//tabURL=week18&promotionID=9403058-B-1
-	String RemoteAddress;					//207.86.215.199
-	String TabURL;							//week18
-	String PromotionID;						//9403058-B-1
+	public ErrorDate ErrorLogDate;					//2015-06-03 15:58:38.360 +0200CEST
+	public String Type; 							//ERROR
+	public String LocalServerName;					//jmbpapp12.jmbp.local
+	public String ServerInstance;					//ES1, ES2
+	public String ServerNode;						//appserver0, appserver1
+	public String RequestSite;						//Jumbo-Grocery-Site
+	public String RequestApplication;				//[mobile]
+	public String Logger;							//com.intershop.beehive.core.internal.request.RequestHandlerServlet
+	public String Marker;
+	public String RequestType;						//Storefront
+	public String SessionId;						//rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+	public String RequestUuid;						//Nna6AVVuJwAaHGMK-1-01
+	public String Thread;							//Nna6AVVuJwAaHGMK-1-01
+	public String Msg;								//ISH-CORE-2351: Exception occurred during request processing:
+	public String StackTrace;						//Complete StackTrace
+	public String UserId;							//jUMKYx4iDzgAAAFNdgxJ4rQq
+	public String ServerName;						//www.jumbo.com
+	public String ServerPort;						//80
+	public String URI;								///servlet/Beehive/WFS/Jumbo-Grocery-Site/nl_NL/-/EUR/ViewPromotionDetailpage-Start
+	public String Method;							//GET
+	public String PathInfo;							///WFS/Jumbo-Grocery-Site/nl_NL/-/EUR/ViewPromotionDetailpage-Start
+	public String QueryString;						//tabURL=week18&promotionID=9403058-B-1
+	public String RemoteAddress;					//207.86.215.199
+	public String TabURL;							//week18
+	public String PromotionID;						//9403058-B-1
 	
-	SystemInformation systemInformation;	//Complete System Informaiton
-	RequestInformation requestInformation;	//Complete Request Information
-	RequestParameters requestParameters;	//Complete Request Parameters
+	public SystemInformation systemInformation;		//Complete System Informaiton
+	public RequestInformation requestInformation;	//Complete Request Information
+	public RequestParameters requestParameters;		//Complete Request Parameters
+	
+	public String ErrorStackHash;					//HashTag created from all lines in the Error Stack trace
+	public String ObjectHash;						//Is created by combining ErrorDate, Type, LocalServerName,ServerNode
 	
 	public RequestInformation getRequestInformation() {
 		return requestInformation;
@@ -134,12 +135,7 @@ public class ErrorObject {
 	public void setMsg(String msg) {
 		Msg = msg;
 	}
-	public ArrayList<String> getStackTrace() {
-		return StackTrace;
-	}
-	public void setStackTrace(ArrayList<String> stackTrace) {
-		StackTrace = stackTrace;
-	}
+
 	public String getUserId() {
 		return UserId;
 	}
@@ -205,6 +201,26 @@ public class ErrorObject {
 	}
 	public void setSystemInformation(SystemInformation systemInformation) {
 		this.systemInformation = systemInformation;
+	}
+	
+	public String getErrorStackHash() {
+		return ErrorStackHash;
+	}
+	public void setErrorStackHash(String errorStackHash) {
+		ErrorStackHash = errorStackHash;
+	}
+	public String getObjectHash() {
+		return ObjectHash;
+	}
+	public void setObjectHash(String objectHash) {
+		ObjectHash = objectHash;
+	}
+
+	public String getStackTrace() {
+		return StackTrace;
+	}
+	public void setStackTrace(String stackTrace) {
+		StackTrace = stackTrace;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+import Logger.DataBaseAccess;
 import configuration.Log;
 import dataObjects.ErrorObject;
 import parser.Parser;
@@ -11,6 +12,7 @@ import reader.Reader;
 
 public class ApplicationReader extends Reader{
 
+	public DataBaseAccess DBA = new DataBaseAccess();
 
 	public ApplicationReader(Log log) {
 		super(log);
@@ -74,6 +76,8 @@ public class ApplicationReader extends Reader{
 						//3. We clear the current ArrayList and after that we put the new line
 						
 						ErrorObject EO = parseMessage(BufferedLine,thisLog);
+						
+						DBA.CheckErrorInDictionary(EO);
 						
 						BufferedLine.clear();
 						BufferedLine.add(line);

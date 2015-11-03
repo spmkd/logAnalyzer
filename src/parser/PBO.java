@@ -115,7 +115,7 @@ public class PBO {
 //		System.out.print(message);
 		
 		for (String s : tempSplit){
-//			System.out.print(" - " + s);
+			System.out.print(" - " + s);
 		}
 		
 //		System.out.println();
@@ -278,15 +278,15 @@ public class PBO {
 		
 		String tempLine = new String();
 		
+		String forHashFromStack = new String();
+		
 		tempLine = completeErrorStack.get(1);
 		
 		if(!tempLine.startsWith("\tat")){
 			return;
 		}
 		
-		ArrayList<String> SB = new ArrayList<String>();
-		
-		SB.add(tempLine);
+		forHashFromStack += tempLine;
 		
 		for(int i=2; i<completeErrorStack.size(); i++){
 			
@@ -295,12 +295,16 @@ public class PBO {
 			if(tempLine.isEmpty()){
 				break;
 			}else{
-				SB.add(tempLine);
+				forHashFromStack += tempLine;
 			}
 			
 		}
 		
-		errorObject.setStackTrace(SB);
+		int theHash = forHashFromStack.hashCode();
+		
+		errorObject.setErrorStackHash(Integer.toString(theHash));
+		
+		errorObject.setStackTrace(forHashFromStack);
 		
 	}
 
