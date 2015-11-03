@@ -39,7 +39,9 @@ public class DataBaseAccess {
             	
             	//In case there is a result returned from the search, we need to update the main table with reference of the idErrorStackDictionary
             	
-                System.out.println(rs.getString(1));
+            	System.out.println(errorObject.getObjectHash());
+                addToMainTable(rs.getString(1), errorObject);
+                
             }else{
             	
             	//In case there is no result returned from the search, we need to update the dictionary and to update the main table with reference of the idErrorStackDictionary
@@ -61,7 +63,7 @@ public class DataBaseAccess {
             	}else{
             		
             		//if there is no actual error stack just enter it in the main table
-            		
+            		//System.out.println("Without stack!");
             	}
             }
         	
@@ -87,5 +89,11 @@ public class DataBaseAccess {
             }
         }
     }
+
+
+	private void addToMainTable(String string, ErrorObject errorObject) {
+		// TODO Auto-generated method stub
+		
+	}
     
 }

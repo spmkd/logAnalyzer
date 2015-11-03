@@ -52,7 +52,21 @@ public class PBO {
 		checkForRequestInfo(completeErrorStack);
 		checkForRequestParam(completeErrorStack);
 		
+		makeObjectHash();
+		
 		return errorObject;
+	}
+
+	private void makeObjectHash() {
+
+		// Is created by combining ErrorDate, Type, LocalServerName,ServerNode
+		
+		String tmpHash = "";
+		
+		tmpHash = errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime() + " " + errorObject.getType() + " " + errorObject.getLocalServerName() + " " + errorObject.getServerNode() +  " " + errorObject.getErrorStackHash() + " " + errorObject.getRequestUuid();
+		
+		errorObject.setObjectHash( Integer.toString( tmpHash.hashCode() ) );
+		
 	}
 
 	private void checkForRequestParam(ArrayList<String> completeErrorStack) {
