@@ -187,10 +187,15 @@ public class PBO {
 					case "Remote Address":
 						tempReqInf.setRemoteAddress(tempSplit[1].trim());
 						break;
+						
+					case "Remote User":
+						tempReqInf.setRemoteUser(tempSplit[1].trim());
+						break;
 					
 					default:
 						String message = "Unexpected Request Information";
 						printTempSplitContains(message,tempSplit);
+						break;
 					
 					}
 					
