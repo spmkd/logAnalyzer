@@ -12,8 +12,6 @@ import reader.Reader;
 
 public class ApplicationReader extends Reader{
 
-	public DataBaseAccess DBA = new DataBaseAccess();
-
 	public ApplicationReader(Log log) {
 		super(log);
 		
@@ -77,7 +75,7 @@ public class ApplicationReader extends Reader{
 						
 						ErrorObject EO = parseMessage(BufferedLine,thisLog);
 						
-						DBA.CheckErrorInDictionary(EO);
+						DataBaseAccess.CheckErrorInDictionary(EO);
 						
 						BufferedLine.clear();
 						BufferedLine.add(line);

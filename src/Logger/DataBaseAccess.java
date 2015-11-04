@@ -2,11 +2,13 @@ package Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 import dataObjects.ErrorObject;
 
@@ -14,23 +16,20 @@ public class DataBaseAccess {
 	
     public static Connection con = null;
     public static Statement st = null;
-    public static Statement stU = null;
     public static ResultSet rs = null;
     
-    String url = "jdbc:mysql://localhost:3306/testdb";
-    String user = "testuser";
-    String password = "test623";
+    static String url = "jdbc:mysql://localhost:3306/testdb";
+    static String user = "testuser";
+    static String password = "test623";
 
 
-    public void CheckErrorInDictionary(ErrorObject errorObject){
+    public static synchronized void CheckErrorInDictionary(ErrorObject errorObject){
     	
         
         try {
         	con = DriverManager.getConnection(url, user, password);
         	
         	st = con.createStatement();
-        	
-        	stU = con.createStatement();
         	
         	rs = st.executeQuery("SELECT * FROM errorstackdictionary WHERE HashNumber = '" + errorObject.getErrorStackHash() + "'");
 
@@ -52,14 +51,16 @@ public class DataBaseAccess {
             		
 	            	System.out.println("Not found! Will Add");
 	            	
-	            	String SQL_INSERT = "INSERT INTO errorstackdictionary"
-	        		+ " (HashNumber, FullStackTrace, LoggedForFirstTime, LoggedLastTime) VALUES"
-	        		+ "(\"" + errorObject.ErrorStackHash 
-	        		+ "\",\"" + errorObject.getStackTrace() 
-	        		+ "\",\"" + errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime() 
-	        		+ "\",\"" + errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime() + "\")";
+	            	String SQL_INSERT = "INSERT INTO errorstackdictionary (HashNumber, FullStackTrace, LoggedForFirstTime, LoggedLastTime) VALUES (?,?,?,?)";
 	            	
-	            	stU.executeUpdate(SQL_INSERT);
+	            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT)){
+	            		statement.setInt(1, Integer.parseInt(errorObject.ErrorStackHash));
+	            		statement.setString(2, errorObject.getStackTrace());
+	            		statement.setString(3, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+	            		statement.setString(4, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+	            		statement.executeUpdate();
+	            	}
+	            	
             	}else{
             		
             		//if there is no actual error stack just enter it in the main table
@@ -91,7 +92,7 @@ public class DataBaseAccess {
     }
 
 
-	private void addToMainTable(String string, ErrorObject errorObject) {
+	private static void addToMainTable(String string, ErrorObject errorObject) {
 		// TODO Auto-generated method stub
 		
 	}
