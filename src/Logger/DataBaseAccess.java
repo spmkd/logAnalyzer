@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,7 +39,33 @@ public class DataBaseAccess {
         	
             if (rs.next()) {
             	
-            	//In case there is a result returned from the search, we need to update the main table with reference of the idErrorStackDictionary
+            	//In case there is a result returned from the search, we need to:
+            	// - check if the LoggedForFirstTime is earlier than the one recorded
+            	// - check if the LoggedLastTime is later than the one recorded
+            	// - update the main table with reference of the idErrorStackDictionary
+            	
+            	String SQL_UPDATE = "UPDATE errorstackdictionary SET ";
+            	Boolean shouldIUpdate = false;
+
+            	if (checkLoggedForFirstTime(rs, errorObject)){
+            		System.out.println("Should update loggedFirstTime");
+            		SQL_UPDATE += " LoggedForFirstTime = '" + errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime() + "' ";
+            		shouldIUpdate = true;
+            	}
+            	
+            	if(checkLoggedLastTime(rs, errorObject)){
+            		System.out.println("Should update LoggedLastTime");
+            		SQL_UPDATE += " LoggedLastTime = '" + errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime() + "' ";
+            		shouldIUpdate = true;
+            	}
+            	
+            	if (shouldIUpdate){
+            		SQL_UPDATE += " WHERE idErrorStackDictionary = '" + rs.getString(1) + "';";
+            		
+                	PreparedStatement statement = con.prepareStatement(SQL_UPDATE);
+                	statement.executeUpdate();
+            	}
+            	
             	
             	System.out.println(errorObject.getObjectHash());
                 addToMainTable(rs.getString(1), errorObject);
@@ -64,7 +93,7 @@ public class DataBaseAccess {
             	}else{
             		
             		//if there is no actual error stack just enter it in the main table
-            		//System.out.println("Without stack!");
+            		System.out.println("Without stack!");
             	}
             }
         	
@@ -90,6 +119,69 @@ public class DataBaseAccess {
             }
         }
     }
+
+
+	private static boolean checkLoggedForFirstTime(ResultSet rs2, ErrorObject errorObject) {
+		// TODO Auto-generated method stub
+		
+		try {
+			
+			Date inDbDate = null;
+			Date inErrorObject = null;
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
+			
+			try {
+				inDbDate = (Date) sdf.parse(rs2.getString(4));
+				inErrorObject = (Date) sdf.parse( errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if ( inDbDate.after(inErrorObject) ){
+				return true;
+			}
+			
+			//System.out.println("checkDateTimeInDictinoray - " + inDbDate + " in ErrorObject - " + inErrorObject);			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	private static boolean checkLoggedLastTime(ResultSet rs2, ErrorObject errorObject) {
+		// TODO Auto-generated method stub
+		
+		try {
+			
+			Date inDbDate = null;
+			Date inErrorObject = null;
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
+			
+			try {
+				inDbDate = (Date) sdf.parse(rs2.getString(5));
+				inErrorObject = (Date) sdf.parse( errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if ( inDbDate.before(inErrorObject) ){
+				return true;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 
 
 	private static void addToMainTable(String string, ErrorObject errorObject) {

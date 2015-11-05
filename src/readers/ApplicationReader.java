@@ -42,8 +42,8 @@ public class ApplicationReader extends Reader{
 				
 				if(line == null){
 					//in case there is no new data written in the log, pause the execution for 1 sec
-					Thread.sleep(1000);
 					System.out.println("need to sleep!");
+					Thread.sleep(1000);
                     continue;
 				}
 
