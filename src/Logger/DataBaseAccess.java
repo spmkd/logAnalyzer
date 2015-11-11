@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 import dataObjects.ErrorObject;
 
 public class DataBaseAccess {
@@ -62,12 +61,14 @@ public class DataBaseAccess {
             	if (shouldIUpdate){
             		SQL_UPDATE += " WHERE idErrorStackDictionary = '" + rs.getString(1) + "';";
             		
+            		
+            		System.out.println("SQL UPDATE: " + SQL_UPDATE);
                 	PreparedStatement statement = con.prepareStatement(SQL_UPDATE);
                 	statement.executeUpdate();
             	}
             	
             	
-            	System.out.println(errorObject.getObjectHash());
+            	//System.out.println(errorObject.getObjectHash());
                 addToMainTable(rs.getString(1), errorObject);
                 
             }else{
@@ -122,20 +123,31 @@ public class DataBaseAccess {
 
 
 	private static boolean checkLoggedForFirstTime(ResultSet rs2, ErrorObject errorObject) {
-		// TODO Auto-generated method stub
 		
 		try {
 			
 			Date inDbDate = null;
 			Date inErrorObject = null;
 			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 			
 			try {
-				inDbDate = (Date) sdf.parse(rs2.getString(4));
-				inErrorObject = (Date) sdf.parse( errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+				
+				if(rs2.getString(4).length()==21)
+				{
+					String tmpParse = rs2.getString(4) + "00";
+					inDbDate =  sdf.parse(tmpParse);
+				}else if(rs2.getString(4).length()==22)
+				{
+					String tmpParse = rs2.getString(4) + "0";
+					inDbDate =  sdf.parse(tmpParse);
+				}else if(rs2.getString(4).length()==23)
+				{
+					inDbDate =  sdf.parse(rs2.getString(4));
+				}
+				
+				inErrorObject = sdf.parse( errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -146,28 +158,42 @@ public class DataBaseAccess {
 			//System.out.println("checkDateTimeInDictinoray - " + inDbDate + " in ErrorObject - " + inErrorObject);			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return false;
 	}
+
 	
 	private static boolean checkLoggedLastTime(ResultSet rs2, ErrorObject errorObject) {
-		// TODO Auto-generated method stub
 		
 		try {
 			
 			Date inDbDate = null;
 			Date inErrorObject = null;
 			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 			
 			try {
-				inDbDate = (Date) sdf.parse(rs2.getString(5));
-				inErrorObject = (Date) sdf.parse( errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+				
+				if(rs2.getString(5).length()==21)
+				{
+					String tmpParse = rs2.getString(5) + "00";
+					inDbDate =  sdf.parse(tmpParse);
+				}else if(rs2.getString(5).length()==22)
+				{
+					String tmpParse = rs2.getString(5) + "0";
+					inDbDate =  sdf.parse(tmpParse);
+				}else if(rs2.getString(5).length()==23)
+				{
+					inDbDate =  sdf.parse(rs2.getString(5));
+				}
+				
+				String secondObject = errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime();
+
+				inErrorObject = sdf.parse(secondObject);
+
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -176,17 +202,13 @@ public class DataBaseAccess {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return false;
 	}
 
-
-	private static void addToMainTable(String string, ErrorObject errorObject) {
-		// TODO Auto-generated method stub
-		
+	private static void addToMainTable(String string, ErrorObject errorObject) {		
 	}
     
 }

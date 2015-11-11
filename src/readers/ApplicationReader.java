@@ -87,6 +87,14 @@ public class ApplicationReader extends Reader{
 				}
 
 			}
+			
+			if (!BufferedLine.isEmpty()){
+				
+				ErrorObject EO = parseMessage(BufferedLine,thisLog);
+				DataBaseAccess.CheckErrorInDictionary(EO);			
+				BufferedLine.clear();
+			}
+			
 			br.close();
 		} catch (Exception e) {e.printStackTrace();}
 		
