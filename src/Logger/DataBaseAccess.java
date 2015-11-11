@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.mysql.fabric.jdbc.ErrorReportingExceptionInterceptor;
+
 import dataObjects.ErrorObject;
 
 public class DataBaseAccess {
@@ -35,6 +37,7 @@ public class DataBaseAccess {
         	
         	rs = st.executeQuery("SELECT * FROM errorstackdictionary WHERE HashNumber = '" + errorObject.getErrorStackHash() + "'");
 
+        	System.out.println("ItsHere," + errorObject.getObjectHash());
         	
             if (rs.next()) {
             	
@@ -47,13 +50,13 @@ public class DataBaseAccess {
             	Boolean shouldIUpdate = false;
 
             	if (checkLoggedForFirstTime(rs, errorObject)){
-            		System.out.println("Should update loggedFirstTime");
+            		//System.out.println("Should update loggedFirstTime");
             		SQL_UPDATE += " LoggedForFirstTime = '" + errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime() + "' ";
             		shouldIUpdate = true;
             	}
             	
             	if(checkLoggedLastTime(rs, errorObject)){
-            		System.out.println("Should update LoggedLastTime");
+            		//System.out.println("Should update LoggedLastTime");
             		SQL_UPDATE += " LoggedLastTime = '" + errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime() + "' ";
             		shouldIUpdate = true;
             	}
@@ -62,7 +65,7 @@ public class DataBaseAccess {
             		SQL_UPDATE += " WHERE idErrorStackDictionary = '" + rs.getString(1) + "';";
             		
             		
-            		System.out.println("SQL UPDATE: " + SQL_UPDATE);
+            		//System.out.println("SQL UPDATE: " + SQL_UPDATE);
                 	PreparedStatement statement = con.prepareStatement(SQL_UPDATE);
                 	statement.executeUpdate();
             	}
@@ -79,7 +82,7 @@ public class DataBaseAccess {
             		
             		//check if there is an actual error stack
             		
-	            	System.out.println("Not found! Will Add");
+	            	//System.out.println("Not found! Will Add");
 	            	
 	            	String SQL_INSERT = "INSERT INTO errorstackdictionary (HashNumber, FullStackTrace, LoggedForFirstTime, LoggedLastTime) VALUES (?,?,?,?)";
 	            	
@@ -94,7 +97,7 @@ public class DataBaseAccess {
             	}else{
             		
             		//if there is no actual error stack just enter it in the main table
-            		System.out.println("Without stack!");
+            		//System.out.println("Without stack!");
             	}
             }
         	
