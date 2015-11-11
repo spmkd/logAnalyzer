@@ -63,7 +63,9 @@ public class PBO {
 		
 		String tmpHash = "";
 		
-		tmpHash = errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime() + " " + errorObject.getType() + " " + errorObject.getLocalServerName() + " " + errorObject.getServerNode() +  " " + errorObject.getErrorStackHash() + " " + errorObject.getRequestUuid();
+		//tmpHash = errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime() + " " + errorObject.getType() + " " + errorObject.getLocalServerName() + " " + errorObject.getServerNode() +  " " + errorObject.getErrorStackHash() + " " + errorObject.getRequestUuid();
+		
+		tmpHash = Integer.toString(errorObject.hashCode());
 		
 		errorObject.setObjectHash( Integer.toString( tmpHash.hashCode() ) );
 		
