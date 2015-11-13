@@ -81,16 +81,15 @@ public class DataBaseAccess {
             	if(errorObject.getErrorStackHash() != null){
             		
             		//check if there is an actual error stack
-            		
-	            	//System.out.println("Not found! Will Add");
 	            	
-	            	String SQL_INSERT = "INSERT INTO errorstackdictionary (HashNumber, FullStackTrace, LoggedForFirstTime, LoggedLastTime) VALUES (?,?,?,?)";
+	            	String SQL_INSERT = "INSERT INTO errorstackdictionary (HashNumber, FullStackTrace, LoggedForFirstTime, LoggedLastTime, TheErrorMessage) VALUES (?,?,?,?,?)";
 	            	
 	            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT)){
 	            		statement.setInt(1, Integer.parseInt(errorObject.ErrorStackHash));
 	            		statement.setString(2, errorObject.getStackTrace());
 	            		statement.setString(3, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
 	            		statement.setString(4, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+	            		statement.setString(5, errorObject.getMsg());
 	            		statement.executeUpdate();
 	            	}
 	            	
@@ -123,7 +122,6 @@ public class DataBaseAccess {
             }
         }
     }
-
 
 	private static boolean checkLoggedForFirstTime(ResultSet rs2, ErrorObject errorObject) {
 		
@@ -166,7 +164,6 @@ public class DataBaseAccess {
 		
 		return false;
 	}
-
 	
 	private static boolean checkLoggedLastTime(ResultSet rs2, ErrorObject errorObject) {
 		

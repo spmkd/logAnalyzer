@@ -316,7 +316,7 @@ public class PBO {
 			if(tempLine.isEmpty()){
 				break;
 			}else{
-				forHashFromStack += tempLine;
+				forHashFromStack += RemoveContentInBrackets(tempLine);
 			}
 			
 		}
@@ -327,6 +327,17 @@ public class PBO {
 		
 		errorObject.setStackTrace(forHashFromStack);
 		
+	}
+
+	private String RemoveContentInBrackets(String tempLine) {
+
+		String toReturn = tempLine;
+		
+		if(tempLine.contains("[")){
+			toReturn = tempLine.replaceAll("\\[.*]", "[]");
+		}
+				
+		return toReturn;
 	}
 
 	private void splitFirstErrorLine(String firstErrorLine) {

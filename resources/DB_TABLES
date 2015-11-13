@@ -1,0 +1,9 @@
+CREATE TABLE `testdb`.`errorstackdictionary` (
+  `idErrorStackDictionary` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `HashNumber` INT NULL COMMENT '',
+  `FullStackTrace` TEXT NULL COMMENT '',
+  `LoggedForFirstTime` DATETIME(3) NULL COMMENT '',
+  `LoggedLastTime` DATETIME(3) NULL COMMENT '',
+  `errorstackdictionarycol` VARCHAR(45) NULL COMMENT '',
+  PRIMARY KEY (`idErrorStackDictionary`)  COMMENT '',
+  UNIQUE INDEX `idErrorStackDictionary_UNIQUE` (`idErrorStackDictionary` ASC)  COMMENT '');
