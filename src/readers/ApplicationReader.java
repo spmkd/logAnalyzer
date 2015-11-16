@@ -12,6 +12,9 @@ import reader.Reader;
 
 public class ApplicationReader extends Reader{
 
+	long startTime;
+	long estimatedTime;
+	
 	public ApplicationReader(Log log) {
 		super(log);
 		
@@ -19,6 +22,9 @@ public class ApplicationReader extends Reader{
 	}
 	
 	public void run() {
+		
+		// We need a timer to display the whole time
+		startTime = System.currentTimeMillis();
 		
 		// First, we need to check whether this is Continuous or OneTimeRead
 		boolean Continuous=true;
@@ -98,7 +104,10 @@ public class ApplicationReader extends Reader{
 			br.close();
 		} catch (Exception e) {e.printStackTrace();}
 		
-		System.out.println(this.getName() + " (label: " + thisLog.getLabel() + ") stopping!");
+		// Calculate end time
+		estimatedTime = System.currentTimeMillis() - startTime;
+		
+		System.out.println(this.getName() + " (label: " + thisLog.getLabel() + ") stopping! [Time Elapsed: " + (estimatedTime / 1000) + " seconds ]");
 		
 	}
 	

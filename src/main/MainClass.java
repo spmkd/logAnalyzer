@@ -20,6 +20,8 @@ public class MainClass {
 		
 		System.out.println("2.0 Start reading all logs...");
 		this.LoadAllReaderClasses();
+		
+		System.out.println("3.0 Finished reading all logs!");
 
 	}
 	

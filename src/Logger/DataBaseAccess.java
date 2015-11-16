@@ -37,7 +37,7 @@ public class DataBaseAccess {
         	
         	rs = st.executeQuery("SELECT * FROM errorstackdictionary WHERE HashNumber = '" + errorObject.getErrorStackHash() + "'");
 
-        	System.out.println("ItsHere," + errorObject.getObjectHash());
+        	//System.out.println("ItsHere," + errorObject.getObjectHash());
         	
             if (rs.next()) {
             	
