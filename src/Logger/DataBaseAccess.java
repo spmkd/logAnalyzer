@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 import com.mysql.fabric.jdbc.ErrorReportingExceptionInterceptor;
 
+import Filter.MessageFilter;
 import dataObjects.ErrorObject;
 
 public class DataBaseAccess {
@@ -96,7 +97,11 @@ public class DataBaseAccess {
             	}else{
             		
             		//if there is no actual error stack just enter it in the main table
-            		//System.out.println("Without stack!");
+            		
+            		//write down the filtered message in the dictionary (but first, we need to make sure we check these in the dictionary, as currently
+            		//we are checking hash error table, not the single message
+            		
+            		//System.out.println("Without stack! Message is: " + MessageFilter.FilterIt(errorObject.getMsg()));
             	}
             }
         	
