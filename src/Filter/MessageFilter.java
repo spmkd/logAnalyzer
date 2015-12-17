@@ -11,7 +11,7 @@ public class MessageFilter {
 			return "Cannot parse query string...bad parameter";
 		}
 		
-		return errorMessage;
+		return errorMessage; //this is it
 	}
 	
 }
