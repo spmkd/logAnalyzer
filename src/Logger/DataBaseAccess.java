@@ -30,15 +30,28 @@ public class DataBaseAccess {
 
     public static synchronized void CheckErrorInDictionary(ErrorObject errorObject){
     	
+    	if(errorObject.getErrorStackHash() != null){
+    		
+    		//if it is complete error with stack
+    		checkErrorWithStack(errorObject);
+    		
+    	}else{
+    		
+    		//if it is error without a stack
+    		checkErrorWithoutStack(errorObject);
+    		
+    	}
         
+    }
+
+    private static void checkErrorWithStack(ErrorObject errorObject){
+    	
         try {
         	con = DriverManager.getConnection(url, user, password);
         	
         	st = con.createStatement();
         	
         	rs = st.executeQuery("SELECT * FROM errorstackdictionary WHERE HashNumber = '" + errorObject.getErrorStackHash() + "'");
-
-        	//System.out.println("ItsHere," + errorObject.getObjectHash());
         	
             if (rs.next()) {
             	
@@ -96,6 +109,8 @@ public class DataBaseAccess {
 	            	
             	}else{
             		
+            		System.out.println("This should not be printed! Please find this in the code! Xere!32WwM");
+            		
             		//if there is no actual error stack just enter it in the main table
             		
             		//write down the filtered message in the dictionary (but first, we need to make sure we check these in the dictionary, as currently
@@ -126,8 +141,102 @@ public class DataBaseAccess {
                 lgr.log(Level.WARNING, ex.getMessage(), ex);
             }
         }
-    }
 
+    	
+    }
+    
+    private static void checkErrorWithoutStack(ErrorObject errorObject){
+    	
+        try {
+        	con = DriverManager.getConnection(url, user, password);
+        	
+        	st = con.createStatement();
+        	
+        	rs = st.executeQuery("SELECT * FROM errorstackdictionary WHERE TheErrorMessage = '" + MessageFilter.FilterIt(errorObject.getMsg()) + "'");
+        	
+            if (rs.next()) {
+            	
+            	//In case there is a result returned from the search, we need to:
+            	// - check if the LoggedForFirstTime is earlier than the one recorded
+            	// - check if the LoggedLastTime is later than the one recorded
+            	// - update the main table with reference of the idErrorStackDictionary
+            	
+            	String SQL_UPDATE = "UPDATE errorstackdictionary SET ";
+            	Boolean shouldIUpdate = false;
+
+            	if (checkLoggedForFirstTime(rs, errorObject)){
+            		//System.out.println("Should update loggedFirstTime");
+            		SQL_UPDATE += " LoggedForFirstTime = '" + errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime() + "' ";
+            		shouldIUpdate = true;
+            	}
+            	
+            	if(checkLoggedLastTime(rs, errorObject)){
+            		//System.out.println("Should update LoggedLastTime");
+            		SQL_UPDATE += " LoggedLastTime = '" + errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime() + "' ";
+            		shouldIUpdate = true;
+            	}
+            	
+            	if (shouldIUpdate){
+            		SQL_UPDATE += " WHERE idErrorStackDictionary = '" + rs.getString(1) + "';";
+            		
+            		
+            		//System.out.println("SQL UPDATE: " + SQL_UPDATE);
+                	PreparedStatement statement = con.prepareStatement(SQL_UPDATE);
+                	statement.executeUpdate();
+            	}
+            	
+            	
+            	//System.out.println(errorObject.getObjectHash());
+                addToMainTable(rs.getString(1), errorObject);
+                
+            }else{
+            	
+            	//In case there is no result returned from the search, we need to update the dictionary and to update the main table with reference of the idErrorStackDictionary
+            	
+            	if(errorObject.getErrorStackHash() == null){
+            		
+            		//make sure there is no actual error stack
+	            	
+	            	String SQL_INSERT = "INSERT INTO errorstackdictionary (LoggedForFirstTime, LoggedLastTime, TheErrorMessage) VALUES (?,?,?)";
+	            	
+	            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT)){
+	            		statement.setString(1, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+	            		statement.setString(2, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+	            		statement.setString(3, MessageFilter.FilterIt(errorObject.getMsg()));
+	            		statement.executeUpdate();
+	            	}
+	            	
+            	}else{
+            		
+            		System.out.println("This should not be printed! Please find this in the code! 23pokweoiugfj09");
+            		
+            	}
+            }
+        	
+        }catch (SQLException ex) {
+            Logger lgr = Logger.getLogger(checkDBConnection.class.getName());
+            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+
+        }finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (st != null) {
+                    st.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+
+            } catch (SQLException ex) {
+                Logger lgr = Logger.getLogger(checkDBConnection.class.getName());
+                lgr.log(Level.WARNING, ex.getMessage(), ex);
+            }
+        }
+    	    	
+    }
+    
 	private static boolean checkLoggedForFirstTime(ResultSet rs2, ErrorObject errorObject) {
 		
 		try {
