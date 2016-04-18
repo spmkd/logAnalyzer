@@ -8,7 +8,7 @@ CREATE TABLE `testdb`.`errorstackdictionary` (
   PRIMARY KEY (`idErrorStackDictionary`)  COMMENT '',
   UNIQUE INDEX `idErrorStackDictionary_UNIQUE` (`idErrorStackDictionary` ASC)  COMMENT '');
 
- CREATE TABLE `errorlog` (
+ CREATE TABLE `testdb`.`errorlog` (
    `iderrorlog` int(11) NOT NULL AUTO_INCREMENT,
    `date` date NOT NULL,
    `time` time NOT NULL,
