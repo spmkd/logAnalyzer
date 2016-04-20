@@ -3,8 +3,12 @@ package main;
 import configuration.Configuration;
 import configuration.Log;
 import readers.ApplicationReader;
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
 
 public class MainClass {
+	
+	private static final Logger log4j = LogManager.getLogger(MainClass.class.getName());
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -16,6 +20,7 @@ public class MainClass {
 		// TODO Auto-generated method stub
 		
 		System.out.println("1.0 initialize...");
+		log4j.info("1.0 initialize...");
 		this.initialize();
 		
 		System.out.println("2.0 Start reading all logs...");
