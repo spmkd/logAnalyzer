@@ -18,4 +18,13 @@ public class MessageFilter {
 		return errorMessage; //this is it
 	}
 	
+	public static String EscapeApostrophes(String errorMessage){
+		
+		if(errorMessage.contains("'")){
+			errorMessage.replaceAll("'", "\\'\\'");
+		}
+		
+		return errorMessage;
+	}
+	
 }

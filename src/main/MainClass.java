@@ -19,23 +19,22 @@ public class MainClass {
 	private void start() {
 		// TODO Auto-generated method stub
 		
-		System.out.println("1.0 initialize...");
 		log4j.info("1.0 initialize...");
 		this.initialize();
 		
-		System.out.println("2.0 Start reading all logs...");
+		log4j.info("2.0 Start reading all logs...");
 		this.LoadAllReaderClasses();
 		
-		System.out.println("3.0 Finished reading all logs!");
+		log4j.info("2.2 All Threads Started. Initialization Finished!");
 
 	}
 	
 	private void initialize(){
 
-		System.out.println("1.1 Read Configuration File...");
+		log4j.info("1.1 Read Configuration File...");
 		Configuration.readConfigurationFile();
 		
-		System.out.println("1.2 Put all configuration data into array...");
+		log4j.info("1.2 Put all configuration data into array...");
 		Configuration.fillAllLogfiles();
 		
 	}
@@ -45,6 +44,7 @@ public class MainClass {
 		
 		for (Log n : Configuration.allLogFiles){
 			
+			log4j.info("2.1 Starting a Log Reader Thread!");
 			ApplicationReader worker = new ApplicationReader(n);
 			worker.start();
 			

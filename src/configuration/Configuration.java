@@ -5,7 +5,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import main.MainClass;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 public class Configuration {
+	
+	private static final Logger log4j = LogManager.getLogger(MainClass.class.getName());
 	
 	public static ArrayList<Log> allLogFiles = new ArrayList<Log>();
 	
@@ -25,6 +32,7 @@ public class Configuration {
 				String line = scanner.nextLine();
 				
 				if (!line.startsWith("#")){
+					log4j.info("1.1.1 Configuration Entry Line: " + line);
 					rawLogLines.add(line);
 				}
 				
@@ -66,7 +74,7 @@ public class Configuration {
 			Separator = separated[4].charAt(0);
 
 			Location = fixLocation(Location);
-			
+			log4j.info("1.2.1 Adding: " + Location);
 			addToAllLogFiles(Location, DirectoryOrFile, Label, Type, Separator);
 		}
 		

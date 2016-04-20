@@ -152,7 +152,14 @@ public class DataBaseAccess {
         	
         	st = con.createStatement();
         	
-        	rs = st.executeQuery("SELECT * FROM errorstackdictionary WHERE TheErrorMessage = '" + MessageFilter.FilterIt(errorObject.getMsg()) + "'");
+        	String FilteredMessage = "";
+        	
+        	FilteredMessage = MessageFilter.FilterIt(errorObject.getMsg());
+        	FilteredMessage = MessageFilter.EscapeApostrophes(FilteredMessage);
+        	
+        	//System.out.println("What will be executed: "+ "SELECT * FROM errorstackdictionary WHERE TheErrorMessage = '" + FilteredMessage + "'");
+        	
+        	rs = st.executeQuery("SELECT * FROM errorstackdictionary WHERE TheErrorMessage = '" + FilteredMessage + "'");
         	
             if (rs.next()) {
             	

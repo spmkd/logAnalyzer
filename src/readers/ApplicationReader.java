@@ -7,18 +7,24 @@ import java.util.ArrayList;
 import Logger.DataBaseAccess;
 import configuration.Log;
 import dataObjects.ErrorObject;
+import main.MainClass;
 import parser.Parser;
 import reader.Reader;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class ApplicationReader extends Reader{
 
 	long startTime;
 	long estimatedTime;
 	
+	private static final Logger log4j = LogManager.getLogger(MainClass.class.getName());
+	
 	public ApplicationReader(Log log) {
 		super(log);
 		
-		System.out.println(this.getName() + " (label: " + thisLog.getLabel() + ") starting!");
+		log4j.info(this.getName() + " (label: " + thisLog.getLabel() + ") started!");
 	}
 	
 	public void run() {
