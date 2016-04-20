@@ -21,7 +21,7 @@ public class MessageFilter {
 	public static String EscapeApostrophes(String errorMessage){
 		
 		if(errorMessage.contains("'")){
-			errorMessage.replaceAll("'", "\\'\\'");
+			errorMessage = errorMessage.replaceAll("'", "\'\'");
 		}
 		
 		return errorMessage;

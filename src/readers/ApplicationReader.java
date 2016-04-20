@@ -113,7 +113,7 @@ public class ApplicationReader extends Reader{
 		// Calculate end time
 		estimatedTime = System.currentTimeMillis() - startTime;
 		
-		System.out.println(this.getName() + " (label: " + thisLog.getLabel() + ") stopping! [Time Elapsed: " + (estimatedTime / 1000) + " seconds ]");
+		log4j.info(this.getName() + " (label: " + thisLog.getLabel() + ") stopping! [Time Elapsed: " + (estimatedTime / 1000) + " seconds ]");
 		
 	}
 	
