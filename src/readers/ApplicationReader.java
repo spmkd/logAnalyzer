@@ -24,7 +24,7 @@ public class ApplicationReader extends Reader{
 	public ApplicationReader(Log log) {
 		super(log);
 		
-		log4j.info(this.getName() + " (label: " + thisLog.getLabel() + ") started!");
+		log4j.info(this.getName() + " started! - (Label: " + thisLog.getLabel() + ")");
 	}
 	
 	public void run() {
@@ -87,7 +87,7 @@ public class ApplicationReader extends Reader{
 						
 						ErrorObject EO = parseMessage(BufferedLine,thisLog);
 						
-						DataBaseAccess.CheckErrorInDictionary(EO);
+						DAcheckErrorInDictionary(EO);
 						
 						BufferedLine.clear();
 						BufferedLine.add(line);
@@ -103,7 +103,7 @@ public class ApplicationReader extends Reader{
 			if (!BufferedLine.isEmpty()){
 				
 				ErrorObject EO = parseMessage(BufferedLine,thisLog);
-				DataBaseAccess.CheckErrorInDictionary(EO);			
+				DAcheckErrorInDictionary(EO);			
 				BufferedLine.clear();
 			}
 			
@@ -113,7 +113,13 @@ public class ApplicationReader extends Reader{
 		// Calculate end time
 		estimatedTime = System.currentTimeMillis() - startTime;
 		
-		log4j.info(this.getName() + " (label: " + thisLog.getLabel() + ") stopping! [Time Elapsed: " + (estimatedTime / 1000) + " seconds ]");
+		log4j.info(this.getName() + " stopped! - (Label: " + thisLog.getLabel() + ") - [Time Elapsed: " + (estimatedTime / 1000) + " seconds ]");
+		
+	}
+	
+	public synchronized void DAcheckErrorInDictionary(ErrorObject eo){
+		
+		DataBaseAccess.CheckErrorInDictionary(eo);
 		
 	}
 	
