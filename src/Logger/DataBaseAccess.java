@@ -12,8 +12,6 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.mysql.fabric.jdbc.ErrorReportingExceptionInterceptor;
-
 import Filter.MessageFilter;
 import dataObjects.ErrorObject;
 
@@ -99,7 +97,7 @@ public class DataBaseAccess {
 	            	String SQL_INSERT = "INSERT INTO errorstackdictionary (ErrorHashNumber, FullStackTrace, LoggedForFirstTime, LoggedLastTime, TheErrorMessage) VALUES (?,?,?,?,?)";
 	            	
 	            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT)){
-	            		statement.setInt(1, Integer.parseInt(errorObject.ErrorStackHash));
+	            		statement.setInt(1, Integer.parseInt(errorObject.getErrorStackHash()));
 	            		statement.setString(2, errorObject.getStackTrace());
 	            		statement.setString(3, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
 	            		statement.setString(4, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());

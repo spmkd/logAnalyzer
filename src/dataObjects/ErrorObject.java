@@ -6,38 +6,38 @@ package dataObjects;
 
 public class ErrorObject {
 	
-	public ErrorDate ErrorLogDate;					//2015-06-03 15:58:38.360 +0200CEST
-	public String Type; 							//ERROR
-	public String LocalServerName;					//jmbpapp12.jmbp.local
-	public String ServerInstance;					//ES1, ES2
-	public String ServerNode;						//appserver0, appserver1
-	public String RequestSite;						//Jumbo-Grocery-Site
-	public String RequestApplication;				//[mobile]
-	public String Logger;							//com.intershop.beehive.core.internal.request.RequestHandlerServlet
-	public String Marker;
-	public String RequestType;						//Storefront
-	public String SessionId;						//rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-	public String RequestUuid;						//Nna6AVVuJwAaHGMK-1-01
-	public String Thread;							//Nna6AVVuJwAaHGMK-1-01
-	public String Msg;								//ISH-CORE-2351: Exception occurred during request processing:
-	public String StackTrace;						//Complete StackTrace
-	public String UserId;							//jUMKYx4iDzgAAAFNdgxJ4rQq
-	public String ServerName;						//www.jumbo.com
-	public String ServerPort;						//80
-	public String URI;								///servlet/Beehive/WFS/Jumbo-Grocery-Site/nl_NL/-/EUR/ViewPromotionDetailpage-Start
-	public String Method;							//GET
-	public String PathInfo;							///WFS/Jumbo-Grocery-Site/nl_NL/-/EUR/ViewPromotionDetailpage-Start
-	public String QueryString;						//tabURL=week18&promotionID=9403058-B-1
-	public String RemoteAddress;					//207.86.215.199
-	public String TabURL;							//week18
-	public String PromotionID;						//9403058-B-1
+	private ErrorDate ErrorLogDate;					//2015-06-03 15:58:38.360 +0200CEST
+	private String Type; 							//ERROR
+	private String LocalServerName;					//jmbpapp12.jmbp.local
+	private String ServerInstance;					//ES1, ES2
+	private String ServerNode;						//appserver0, appserver1
+	private String RequestSite;						//Jumbo-Grocery-Site
+	private String RequestApplication;				//[mobile]
+	private String Logger;							//com.intershop.beehive.core.internal.request.RequestHandlerServlet
+	private String Marker;
+	private String RequestType;						//Storefront
+	private String SessionId;						//rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+	private String RequestUuid;						//Nna6AVVuJwAaHGMK-1-01
+	private String Thread;							//Nna6AVVuJwAaHGMK-1-01
+	private String Msg;								//ISH-CORE-2351: Exception occurred during request processing:
+	private String StackTrace;						//Complete StackTrace
+	private String UserId;							//jUMKYx4iDzgAAAFNdgxJ4rQq
+	private String ServerName;						//www.jumbo.com
+	private String ServerPort;						//80
+	private String URI;								///servlet/Beehive/WFS/Jumbo-Grocery-Site/nl_NL/-/EUR/ViewPromotionDetailpage-Start
+	private String Method;							//GET
+	private String PathInfo;							///WFS/Jumbo-Grocery-Site/nl_NL/-/EUR/ViewPromotionDetailpage-Start
+	private String QueryString;						//tabURL=week18&promotionID=9403058-B-1
+	private String RemoteAddress;					//207.86.215.199
+	private String TabURL;							//week18
+	private String PromotionID;						//9403058-B-1
 	
 	public SystemInformation systemInformation;		//Complete System Informaiton
 	public RequestInformation requestInformation;	//Complete Request Information
 	public RequestParameters requestParameters;		//Complete Request Parameters
 	
-	public String ErrorStackHash;					//HashTag created from all lines in the Error Stack trace
-	public String ObjectHash;						//Is created by combining ErrorDate, Type, LocalServerName,ServerNode
+	private String ErrorStackHash;					//HashTag created from all lines in the Error Stack trace
+	private String ObjectHash;						//Is created by combining ErrorDate, Type, LocalServerName,ServerNode
 	
 	public RequestInformation getRequestInformation() {
 		return requestInformation;

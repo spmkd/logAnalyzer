@@ -1,8 +1,5 @@
 package Filter;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.apache.logging.log4j.Logger;
 
 import main.MainClass;
