@@ -1,6 +1,6 @@
 CREATE TABLE `testdb`.`errorstackdictionary` (
   `idErrorStackDictionary` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `HashNumber` INT NULL COMMENT '',
+  `ErrorHashNumber` INT NULL COMMENT '',
   `FullStackTrace` TEXT NULL COMMENT '',
   `LoggedForFirstTime` DATETIME(3) NULL COMMENT '',
   `LoggedLastTime` DATETIME(3) NULL COMMENT '',

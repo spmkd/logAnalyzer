@@ -51,7 +51,7 @@ public class DataBaseAccess {
         	
         	st = con.createStatement();
         	
-        	rs = st.executeQuery("SELECT * FROM errorstackdictionary WHERE HashNumber = '" + errorObject.getErrorStackHash() + "'");
+        	rs = st.executeQuery("SELECT * FROM errorstackdictionary WHERE ErrorHashNumber = '" + errorObject.getErrorStackHash() + "'");
         	
             if (rs.next()) {
             	
@@ -96,7 +96,7 @@ public class DataBaseAccess {
             		
             		//check if there is an actual error stack
 	            	
-	            	String SQL_INSERT = "INSERT INTO errorstackdictionary (HashNumber, FullStackTrace, LoggedForFirstTime, LoggedLastTime, TheErrorMessage) VALUES (?,?,?,?,?)";
+	            	String SQL_INSERT = "INSERT INTO errorstackdictionary (ErrorHashNumber, FullStackTrace, LoggedForFirstTime, LoggedLastTime, TheErrorMessage) VALUES (?,?,?,?,?)";
 	            	
 	            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT)){
 	            		statement.setInt(1, Integer.parseInt(errorObject.ErrorStackHash));
