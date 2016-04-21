@@ -24,7 +24,7 @@ public class ApplicationReader extends Reader{
 	public ApplicationReader(Log log) {
 		super(log);
 		
-		log4j.info(this.getName() + " started! - (Label: " + thisLog.getLabel() + ")");
+		log4j.info("[" + this.getName() + " started!] - [Location: " + thisLog.getLocation() + "]");
 	}
 	
 	public void run() {
@@ -113,7 +113,7 @@ public class ApplicationReader extends Reader{
 		// Calculate end time
 		estimatedTime = System.currentTimeMillis() - startTime;
 		
-		log4j.info(this.getName() + " stopped! - (Label: " + thisLog.getLabel() + ") - [Time Elapsed: " + (estimatedTime / 1000) + " seconds ]");
+		log4j.info("[" + this.getName() + " stopped!] - [Location: " + thisLog.getLocation() + "] - [Time Elapsed: " + (estimatedTime / 1000) + " seconds ]");
 		
 	}
 	
