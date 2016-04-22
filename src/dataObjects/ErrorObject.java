@@ -26,7 +26,7 @@ public class ErrorObject {
 	private String ServerPort;						//80
 	private String URI;								///servlet/Beehive/WFS/Jumbo-Grocery-Site/nl_NL/-/EUR/ViewPromotionDetailpage-Start
 	private String Method;							//GET
-	private String PathInfo;							///WFS/Jumbo-Grocery-Site/nl_NL/-/EUR/ViewPromotionDetailpage-Start
+	private String PathInfo;						///WFS/Jumbo-Grocery-Site/nl_NL/-/EUR/ViewPromotionDetailpage-Start
 	private String QueryString;						//tabURL=week18&promotionID=9403058-B-1
 	private String RemoteAddress;					//207.86.215.199
 	private String TabURL;							//week18
@@ -37,7 +37,7 @@ public class ErrorObject {
 	public RequestParameters requestParameters;		//Complete Request Parameters
 	
 	private String ErrorStackHash;					//HashTag created from all lines in the Error Stack trace
-	private String ObjectHash;						//Is created by combining ErrorDate, Type, LocalServerName,ServerNode
+	private String MsgHash;						//Is created from Msg. Used for messages who do not have stackTrace
 	
 	public RequestInformation getRequestInformation() {
 		return requestInformation;
@@ -209,11 +209,11 @@ public class ErrorObject {
 	public void setErrorStackHash(String errorStackHash) {
 		ErrorStackHash = errorStackHash;
 	}
-	public String getObjectHash() {
-		return ObjectHash;
+	public String getMsgHash() {
+		return MsgHash;
 	}
-	public void setObjectHash(String objectHash) {
-		ObjectHash = objectHash;
+	public void setMsgHash(String msgHash) {
+		MsgHash = msgHash;
 	}
 
 	public String getStackTrace() {

@@ -202,12 +202,13 @@ public class DataBaseAccess {
             		
             		//make sure there is no actual error stack
 	            	
-	            	String SQL_INSERT = "INSERT INTO errorstackdictionary (LoggedForFirstTime, LoggedLastTime, TheErrorMessage) VALUES (?,?,?)";
+	            	String SQL_INSERT = "INSERT INTO errorstackdictionary (LoggedForFirstTime, LoggedLastTime, TheErrorMessage, MsgHashNumber) VALUES (?,?,?,?)";
 	            	
 	            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT)){
 	            		statement.setString(1, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
 	            		statement.setString(2, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
 	            		statement.setString(3, MessageFilter.FilterIt(errorObject.getMsg()));
+	            		statement.setString(4, errorObject.getMsgHash());
 	            		statement.executeUpdate();
 	            	}
 	            	
