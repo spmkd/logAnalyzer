@@ -117,7 +117,7 @@ public class ApplicationReader extends Reader{
 		
 	}
 	
-	public synchronized void DAcheckErrorInDictionary(ErrorObject eo){
+	public synchronized void  DAcheckErrorInDictionary(ErrorObject eo){
 		
 		DataBaseAccess.CheckErrorInDictionary(eo);
 		

@@ -57,6 +57,7 @@ public class DataBaseAccess {
             	// - check if the LoggedForFirstTime is earlier than the one recorded
             	// - check if the LoggedLastTime is later than the one recorded
             	// - update the main table with reference of the idErrorStackDictionary
+            	// - Finally, update the table which holds each line of error recorded
             	
             	String SQL_UPDATE = "UPDATE errorstackdictionary SET ";
             	Boolean shouldIUpdate = false;
@@ -82,6 +83,16 @@ public class DataBaseAccess {
                 	statement.executeUpdate();
             	}
             	
+            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, localServerName, serverInstance) VALUES (?,?,?,?)";
+            	
+            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT2)){
+            		statement.setInt(1, Integer.parseInt(errorObject.getErrorStackHash()));
+            		statement.setString(2, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+            		statement.setString(3, errorObject.getLocalServerName());
+            		statement.setString(4, errorObject.getServerInstance());
+            		statement.executeUpdate();
+            	}
+            	
             	
             	//System.out.println(errorObject.getObjectHash());
                 addToMainTable(rs.getString(1), errorObject);
@@ -105,6 +116,16 @@ public class DataBaseAccess {
 	            		statement.executeUpdate();
 	            	}
 	            	
+	            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, localServerName, serverInstance) VALUES (?,?,?,?)";
+	            	
+	            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT2)){
+	            		statement.setInt(1, Integer.parseInt(errorObject.getErrorStackHash()));
+	            		statement.setString(2, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+	            		statement.setString(3, errorObject.getLocalServerName());
+	            		statement.setString(4, errorObject.getServerInstance());
+	            		statement.executeUpdate();
+	            	}
+	            	
             	}else{
             		
             		System.out.println("This should not be printed! Please find this in the code! Xere!32WwM");
@@ -121,6 +142,7 @@ public class DataBaseAccess {
         }catch (SQLException ex) {
             Logger lgr = Logger.getLogger(checkDBConnection.class.getName());
             lgr.log(Level.SEVERE, ex.getMessage(), ex);
+            System.out.println("What failed: " + errorObject.getMsg());
 
         }finally {
             try {
@@ -165,6 +187,7 @@ public class DataBaseAccess {
             	// - check if the LoggedForFirstTime is earlier than the one recorded
             	// - check if the LoggedLastTime is later than the one recorded
             	// - update the main table with reference of the idErrorStackDictionary
+            	// - Finally, update the table which holds each line of error recorded
             	
             	String SQL_UPDATE = "UPDATE errorstackdictionary SET ";
             	Boolean shouldIUpdate = false;
@@ -190,6 +213,16 @@ public class DataBaseAccess {
                 	statement.executeUpdate();
             	}
             	
+            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, localServerName, serverInstance) VALUES (?,?,?,?)";
+            	
+            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT2)){
+            		statement.setInt(1, Integer.parseInt(errorObject.getMsgHash()));
+            		statement.setString(2, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+            		statement.setString(3, errorObject.getLocalServerName());
+            		statement.setString(4, errorObject.getServerInstance());
+            		statement.executeUpdate();
+            	}
+            	
             	
             	//System.out.println(errorObject.getObjectHash());
                 addToMainTable(rs.getString(1), errorObject);
@@ -209,6 +242,16 @@ public class DataBaseAccess {
 	            		statement.setString(2, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
 	            		statement.setString(3, MessageFilter.FilterIt(errorObject.getMsg()));
 	            		statement.setString(4, errorObject.getMsgHash());
+	            		statement.executeUpdate();
+	            	}
+	            	
+	            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, localServerName, serverInstance) VALUES (?,?,?,?)";
+	            	
+	            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT2)){
+	            		statement.setInt(1, Integer.parseInt(errorObject.getMsgHash()));
+	            		statement.setString(2, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
+	            		statement.setString(3, errorObject.getLocalServerName());
+	            		statement.setString(4, errorObject.getServerInstance());
 	            		statement.executeUpdate();
 	            	}
 	            	
