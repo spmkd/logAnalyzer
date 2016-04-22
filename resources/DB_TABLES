@@ -1,12 +1,25 @@
-CREATE TABLE `testdb`.`errorstackdictionary` (
-  `idErrorStackDictionary` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `ErrorHashNumber` INT NULL COMMENT '',
-  `FullStackTrace` TEXT NULL COMMENT '',
-  `LoggedForFirstTime` DATETIME(3) NULL COMMENT '',
-  `LoggedLastTime` DATETIME(3) NULL COMMENT '',
-  `errorstackdictionarycol` VARCHAR(45) NULL COMMENT '',
-  PRIMARY KEY (`idErrorStackDictionary`)  COMMENT '',
-  UNIQUE INDEX `idErrorStackDictionary_UNIQUE` (`idErrorStackDictionary` ASC)  COMMENT '');
+CREATE TABLE `errorstackdictionary` (
+   `idErrorStackDictionary` int(11) NOT NULL AUTO_INCREMENT,
+   `ErrorHashNumber` int(11) DEFAULT NULL,
+   `FullStackTrace` text,
+   `LoggedForFirstTime` datetime(3) DEFAULT NULL,
+   `LoggedLastTime` datetime(3) DEFAULT NULL,
+   `TheErrorMessage` text,
+   `MsgHashNumber` int(11) DEFAULT NULL,
+   PRIMARY KEY (`idErrorStackDictionary`),
+   UNIQUE KEY `idErrorStackDictionary_UNIQUE` (`idErrorStackDictionary`),
+   UNIQUE KEY `MsgHashNumber` (`MsgHashNumber`),
+   UNIQUE KEY `ErrorHashNumber` (`ErrorHashNumber`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=345 DEFAULT CHARSET=utf8
+
+CREATE TABLE `shortenerrorlog` (
+   `idErrorLog` int(11) NOT NULL AUTO_INCREMENT,
+   `hashNumber` int(11) NOT NULL,
+   `time` datetime NOT NULL,
+   `localServerName` tinytext,
+   `serverInstance` tinytext,
+   PRIMARY KEY (`idErrorLog`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=7452 DEFAULT CHARSET=utf8 COMMENT='The table which will contain all entries from the files'
 
  CREATE TABLE `testdb`.`errorlog` (
    `iderrorlog` int(11) NOT NULL AUTO_INCREMENT,
