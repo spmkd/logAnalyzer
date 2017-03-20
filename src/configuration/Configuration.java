@@ -24,7 +24,7 @@ public class Configuration {
 	
 	public static void readConfigurationFile(){
 		
-		File file = new File("C://Users//stojanp//workspace//LogAnalyzer//resources//configuration.txt");
+		File file = new File("resources/configuration.txt");
 		
 		try (Scanner scanner = new Scanner(file)) {
 
