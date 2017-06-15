@@ -46,8 +46,8 @@ public class ApplicationReader extends Reader{
 			ArrayList<String> BufferedLine = new ArrayList<String>();
 
 			BufferedReader br = new BufferedReader(new FileReader(thisLog.getLocation()));
-			String line;			
-
+			String line;
+			
 			// If we need continuous stream Continuous will be always true and the condition will be met. Otherwise, once the file is read, both conditions will be false
 			
 			while ( ((line = br.readLine()) != null) || (Continuous)) {
