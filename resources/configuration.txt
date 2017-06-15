@@ -12,10 +12,10 @@
 #################################################################
 #C:\Users\stojanp\Documents\DBK Issues\ForTheApp\LetsTestIt.log,F,Error Log,O,[
 #C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2015-09-27.A.log,F,Error Log,O,[
-C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2015-09-27-2.log,F,Error Log,O,[
+#C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2015-09-27-2.log,F,Error Log,O,[
 #C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2015-09-27-3.log,F,Error Log,O,[
 #C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp12.5g4k.sys.carrenza.net-ES2-appserver0-2015-09-30.log,F,Error Log,O,[
-C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp12.5g4k.sys.carrenza.net-ES2-appserver1-2015-09-30.log,F,Error Log,O,[
+#C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp12.5g4k.sys.carrenza.net-ES2-appserver1-2015-09-30.log,F,Error Log,O,[
 #C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp12.5g4k.sys.carrenza.net-ES2-appserver2-2015-09-30.log,F,Error Log,O,[
 ##################################################################################################################################
 ################################################################# Majestic
@@ -23,23 +23,6 @@ C:\Users\stojanp\Documents\DBK Issues\ForTheApp\error-dbkecmprapp12.5g4k.sys.car
 #C:\Users\stojanp\Documents\MajIssues\error-10.48.2.15-ES1-appserver0-2015-11-11.log,F,Error Log,O,[
 #C:\Users\stojanp\Documents\MajIssues\error-10.48.2.15-ES1-appserver1-2015-11-11.log,F,Error Log,O,[
 #C:\Users\stojanp\Documents\MajIssues\error-10.48.2.15-ES1-appserver2-2015-11-11.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp11.56fy.sys.carrenza.net-ES1-appserver0-2015-11-11.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp11.56fy.sys.carrenza.net-ES1-appserver1-2015-11-11.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp11.56fy.sys.carrenza.net-ES1-appserver2-2015-11-11.log,F,Error Log,O,[
-C:\Users\stojanp\Documents\MajIssues\error-majprdapp12.56fy.sys.carrenza.net-ES1-appserver0-2015-11-11.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp12.56fy.sys.carrenza.net-ES1-appserver1-2015-11-11.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp12.56fy.sys.carrenza.net-ES1-appserver2-2015-11-11.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp13.56fy.sys.carrenza.net-ES1-appserver0-2015-11-11.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp14.56fy.sys.carrenza.net-ES1-appserver0-2015-11-11.log,F,Error Log,O,[
-C:\Users\stojanp\Documents\MajIssues\error-majprdapp14.56fy.sys.carrenza.net-ES1-appserver1-2015-11-11.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp14.56fy.sys.carrenza.net-ES1-appserver2-2015-11-11.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp11.56fy.sys.carrenza.net-ES1-appserver0-2015-11-11.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp11.56fy.sys.carrenza.net-ES1-appserver1-2015-11-12.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp11.56fy.sys.carrenza.net-ES1-appserver2-2015-11-12.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp12.56fy.sys.carrenza.net-ES1-appserver0-2015-11-12.log,F,Error Log,O,[
-C:\Users\stojanp\Documents\MajIssues\error-majprdapp12.56fy.sys.carrenza.net-ES1-appserver1-2015-11-12.log,F,Error Log,O,[
-C:\Users\stojanp\Documents\MajIssues\error-majprdapp12.56fy.sys.carrenza.net-ES1-appserver2-2015-11-12.log,F,Error Log,O,[
-C:\Users\stojanp\Documents\MajIssues\error-majprdapp13.56fy.sys.carrenza.net-ES1-appserver0-2015-11-12.log,F,Error Log,O,[
-C:\Users\stojanp\Documents\MajIssues\error-majprdapp14.56fy.sys.carrenza.net-ES1-appserver0-2015-11-12.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp14.56fy.sys.carrenza.net-ES1-appserver1-2015-11-12.log,F,Error Log,O,[
-#C:\Users\stojanp\Documents\MajIssues\error-majprdapp14.56fy.sys.carrenza.net-ES1-appserver2-2015-11-12.log,F,Error Log,O,[
+C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-20.log,F,Error Log,O,[
+C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-21.log,F,Error Log,O,[
+C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-22.log,F,Error Log,O,[
