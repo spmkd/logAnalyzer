@@ -213,6 +213,12 @@ public class DataBaseAccess {
                 	statement.executeUpdate();
             	}
             	
+            	// Before entering something in the shortenErrorLog we need to check
+            	// whether this is already existing in the table. We can do this
+            	// by checking whether there is absolutely same information already present.
+            	// The only time where absolutely same information can be present is if the previous ERROR was absolutely same.
+            	// To achive this, we need to keep history of the previous error message
+            	
             	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, localServerName, serverNode) VALUES (?,?,?,?)";
             	
             	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT2)){
@@ -371,7 +377,12 @@ public class DataBaseAccess {
 		return false;
 	}
 
-	private static void addToMainTable(String string, ErrorObject errorObject) {		
+	private static void addToMainTable(String string, ErrorObject errorObject) {
+		
+		// Here we fill the errorlog table
+		
+		
+		
 	}
     
 }
