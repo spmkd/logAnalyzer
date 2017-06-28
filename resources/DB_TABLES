@@ -1,3 +1,7 @@
+CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'test623';
+GRANT ALL PRIVILEGES ON * . * TO 'testuser'@'localhost';
+CREATE DATABASE testdb;
+
 CREATE TABLE `errorstackdictionary` (
    `idErrorStackDictionary` int(11) NOT NULL AUTO_INCREMENT,
    `ErrorHashNumber` int(11) DEFAULT NULL,

@@ -21,7 +21,11 @@ public class DataBaseAccess {
     public static Statement st = null;
     public static ResultSet rs = null;
     
-    static String url = "jdbc:mysql://localhost:3306/testdb";
+    //static String url = "jdbc:mysql://localhost:3306/testdb";
+    //static String user = "testuser";
+    //static String password = "test623";
+    
+    static String url = "jdbc:mysql://10.131.136.251:3306/testdb";
     static String user = "testuser";
     static String password = "test623";
 

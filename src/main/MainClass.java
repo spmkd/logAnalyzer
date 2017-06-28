@@ -34,7 +34,7 @@ public class MainClass {
 		log4j.info("1.1 Read Configuration File...");
 		Configuration.readConfigurationFile();
 		
-		log4j.info("1.2 Put all configuration data into array...");
+		log4j.info("1.2 Put all configuration data into classes...");
 		Configuration.fillAllLogfiles();
 		
 	}

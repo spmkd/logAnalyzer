@@ -24,7 +24,7 @@ public class ApplicationReader extends Reader{
 	public ApplicationReader(Log log) {
 		super(log);
 		
-		log4j.info("[" + this.getName() + " started!] - [Location: " + thisLog.getLocation() + "]");
+		log4j.info("[" + this.getName() + " started!] - [File processed: " + thisLog.getLocation() + "]");
 	}
 	
 	public void run() {

@@ -23,6 +23,6 @@
 #C:\Users\stojanp\Documents\MajIssues\error-10.48.2.15-ES1-appserver0-2015-11-11.log,F,Error Log,O,[
 #C:\Users\stojanp\Documents\MajIssues\error-10.48.2.15-ES1-appserver1-2015-11-11.log,F,Error Log,O,[
 #C:\Users\stojanp\Documents\MajIssues\error-10.48.2.15-ES1-appserver2-2015-11-11.log,F,Error Log,O,[
-C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-20.log,F,Error Log,O,[
+#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-20.log,F,Error Log,O,[
 C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-21.log,F,Error Log,O,[
 C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-22.log,F,Error Log,O,[
