@@ -20,6 +20,7 @@ CREATE TABLE `shortenerrorlog` (
    `idErrorLog` int(11) NOT NULL AUTO_INCREMENT,
    `hashNumber` int(11) NOT NULL,
    `time` datetime NOT NULL,
+   `TheErrorMessage` text,
    `localServerName` tinytext,
    `serverNode` tinytext,
    PRIMARY KEY (`idErrorLog`)

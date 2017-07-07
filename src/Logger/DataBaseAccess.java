@@ -25,7 +25,7 @@ public class DataBaseAccess {
     //static String user = "testuser";
     //static String password = "test623";
     
-    static String url = "jdbc:mysql://10.131.136.251:3306/testdb";
+    static String url = "jdbc:mysql://192.168.1.53:3306/testdb";
     static String user = "testuser";
     static String password = "test623";
 
@@ -87,13 +87,14 @@ public class DataBaseAccess {
                 	statement.executeUpdate();
             	}
             	
-            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, localServerName, serverNode) VALUES (?,?,?,?)";
+            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, TheErrorMessage, localServerName, serverNode) VALUES (?,?,?,?,?)";
             	
             	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT2)){
             		statement.setInt(1, Integer.parseInt(errorObject.getErrorStackHash()));
             		statement.setString(2, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
-            		statement.setString(3, errorObject.getLocalServerName());
-            		statement.setString(4, errorObject.getServerNode());
+            		statement.setString(3, errorObject.getMsg());
+            		statement.setString(4, errorObject.getLocalServerName());
+            		statement.setString(5, errorObject.getServerNode());
             		statement.executeUpdate();
             	}
             	
@@ -120,13 +121,14 @@ public class DataBaseAccess {
 	            		statement.executeUpdate();
 	            	}
 	            	
-	            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, localServerName, serverNode) VALUES (?,?,?,?)";
+	            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, TheErrorMessage, localServerName, serverNode) VALUES (?,?,?,?,?)";
 	            	
 	            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT2)){
 	            		statement.setInt(1, Integer.parseInt(errorObject.getErrorStackHash()));
 	            		statement.setString(2, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
-	            		statement.setString(3, errorObject.getLocalServerName());
-	            		statement.setString(4, errorObject.getServerNode());
+	            		statement.setString(3, errorObject.getMsg());
+	            		statement.setString(4, errorObject.getLocalServerName());
+	            		statement.setString(5, errorObject.getServerNode());
 	            		statement.executeUpdate();
 	            	}
 	            	
@@ -223,13 +225,14 @@ public class DataBaseAccess {
             	// The only time where absolutely same information can be present is if the previous ERROR was absolutely same.
             	// To achive this, we need to keep history of the previous error message
             	
-            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, localServerName, serverNode) VALUES (?,?,?,?)";
+            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, TheErrorMessage, localServerName, serverNode) VALUES (?,?,?,?,?)";
             	
             	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT2)){
             		statement.setInt(1, Integer.parseInt(errorObject.getMsgHash()));
             		statement.setString(2, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
-            		statement.setString(3, errorObject.getLocalServerName());
-            		statement.setString(4, errorObject.getServerNode());
+            		statement.setString(3, errorObject.getMsg());
+            		statement.setString(4, errorObject.getLocalServerName());
+            		statement.setString(5, errorObject.getServerNode());
             		statement.executeUpdate();
             	}
             	
@@ -255,13 +258,14 @@ public class DataBaseAccess {
 	            		statement.executeUpdate();
 	            	}
 	            	
-	            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, localServerName, serverNode) VALUES (?,?,?,?)";
+	            	String SQL_INSERT2 = "INSERT INTO shortenerrorlog (hashNumber, time, TheErrorMessage, localServerName, serverNode) VALUES (?,?,?,?,?)";
 	            	
 	            	try(PreparedStatement statement = con.prepareStatement(SQL_INSERT2)){
 	            		statement.setInt(1, Integer.parseInt(errorObject.getMsgHash()));
 	            		statement.setString(2, errorObject.getErrorLogDate().getDate() + " " + errorObject.getErrorLogDate().getTime());
-	            		statement.setString(3, errorObject.getLocalServerName());
-	            		statement.setString(4, errorObject.getServerNode());
+	            		statement.setString(3, errorObject.getMsg());
+	            		statement.setString(4, errorObject.getLocalServerName());
+	            		statement.setString(5, errorObject.getServerNode());
 	            		statement.executeUpdate();
 	            	}
 	            	

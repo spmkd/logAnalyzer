@@ -1,0 +1,12 @@
+SELECT hashNumber, count(*) as hashNumberCount, TheErrorMessage
+FROM testdb.shortenerrorlog,  testdb.errorstackdictionary 
+WHERE shortenerrorlog.hashNumber =  errorstackdictionary.ErrorHashNumber
+GROUP BY shortenerrorlog.hashNumber , TheErrorMessage
+ORDER BY hashNumberCount DESC;
+
+SELECT hashNumber, count(*) as hashNumberCount, TheErrorMessage
+FROM testdb.shortenerrorlog,  testdb.errorstackdictionary 
+WHERE (shortenerrorlog.hashNumber =  errorstackdictionary.ErrorHashNumber) OR (shortenerrorlog.hashNumber = errorstackdictionary.MsgHashNumber)
+AND time >="2017-06-21 00:00:00" AND time <= "2017-06-24 23:59:59"
+GROUP BY shortenerrorlog.hashNumber , TheErrorMessage
+ORDER BY hashNumberCount DESC;
