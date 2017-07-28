@@ -7,6 +7,7 @@ public class RequestInformation {
 	private String PathInfo;
 	private String QueryString;
 	private String RemoteAddress;
+	private String RemoteUser;
 	
 	public String getURI() {
 		return URI;
@@ -38,6 +39,11 @@ public class RequestInformation {
 	public void setRemoteAddress(String remoteAddress) {
 		RemoteAddress = remoteAddress;
 	}
-	
+	public String getRemoteUser() {
+		return RemoteUser;
+	}
+	public void setRemoteUser(String remoteUser) {
+		RemoteUser = remoteUser;
+	}	
 	
 }

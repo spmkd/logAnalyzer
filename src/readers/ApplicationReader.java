@@ -4,20 +4,33 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+import Logger.DataBaseAccess;
 import configuration.Log;
+import dataObjects.ErrorObject;
+import main.MainClass;
 import parser.Parser;
 import reader.Reader;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 public class ApplicationReader extends Reader{
 
-
+	long startTime;
+	long estimatedTime;
+	
+	private static final Logger log4j = LogManager.getLogger(MainClass.class.getName());
+	
 	public ApplicationReader(Log log) {
 		super(log);
 		
-		System.out.println(this.getName() + " (label: " + thisLog.getLabel() + ") starting!");
+		log4j.info("[" + this.getName() + " started!] - [File processed: " + thisLog.getLocation() + "]");
 	}
 	
 	public void run() {
+		
+		// We need a timer to display the whole time
+		startTime = System.currentTimeMillis();
 		
 		// First, we need to check whether this is Continuous or OneTimeRead
 		boolean Continuous=true;
@@ -33,16 +46,16 @@ public class ApplicationReader extends Reader{
 			ArrayList<String> BufferedLine = new ArrayList<String>();
 
 			BufferedReader br = new BufferedReader(new FileReader(thisLog.getLocation()));
-			String line;			
-
+			String line;
+			
 			// If we need continuous stream Continuous will be always true and the condition will be met. Otherwise, once the file is read, both conditions will be false
 			
 			while ( ((line = br.readLine()) != null) || (Continuous)) {
 				
 				if(line == null){
 					//in case there is no new data written in the log, pause the execution for 1 sec
-					Thread.sleep(1000);
 					System.out.println("need to sleep!");
+					Thread.sleep(1000);
                     continue;
 				}
 
@@ -71,8 +84,11 @@ public class ApplicationReader extends Reader{
 						//1. This is when we receive a new line which should be a new entry
 						//2. We need to put the previous objects for processing
 						//3. We clear the current ArrayList and after that we put the new line
-						//AllErrorObjects.add(pbo.processObject(BufferedLine));
-						subbmitMessage(BufferedLine,thisLog);
+						
+						ErrorObject EO = parseMessage(BufferedLine,thisLog);
+						
+						DAcheckErrorInDictionary(EO);
+						
 						BufferedLine.clear();
 						BufferedLine.add(line);
 
@@ -83,16 +99,33 @@ public class ApplicationReader extends Reader{
 				}
 
 			}
+			
+			if (!BufferedLine.isEmpty()){
+				
+				ErrorObject EO = parseMessage(BufferedLine,thisLog);
+				DAcheckErrorInDictionary(EO);			
+				BufferedLine.clear();
+			}
+			
 			br.close();
 		} catch (Exception e) {e.printStackTrace();}
 		
-		System.out.println(this.getName() + " (label: " + thisLog.getLabel() + ") stopping!");
+		// Calculate end time
+		estimatedTime = System.currentTimeMillis() - startTime;
+		
+		log4j.info("[" + this.getName() + " stopped!] - [Location: " + thisLog.getLocation() + "] - [Time Elapsed: " + (estimatedTime / 1000) + " seconds ]");
 		
 	}
 	
-	public synchronized void subbmitMessage(ArrayList<String> bufferedLine, Log thisLog){
+	public synchronized void  DAcheckErrorInDictionary(ErrorObject eo){
 		
-		Parser.applicationParse(bufferedLine, thisLog);
+		DataBaseAccess.CheckErrorInDictionary(eo);
+		
+	}
+	
+	public synchronized ErrorObject parseMessage(ArrayList<String> bufferedLine, Log thisLog){
+		
+		return Parser.applicationParse(bufferedLine, thisLog);
 		
 	}
 

@@ -6,7 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import main.MainClass;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 public class Configuration {
+	
+	private static final Logger log4j = LogManager.getLogger(MainClass.class.getName());
 	
 	public static ArrayList<Log> allLogFiles = new ArrayList<Log>();
 	
@@ -17,9 +24,7 @@ public class Configuration {
 	
 	public static void readConfigurationFile(){
 		
-//		File file = new File("C://Users//stojanp//workspace//LogAnalyzer//resources//configuration.txt");
-		
-		File file = new File(Configuration.class.getClassLoader().getResource("configuration.txt").getFile());
+		File file = new File("resources/configuration.txt");
 		
 		try (Scanner scanner = new Scanner(file)) {
 
@@ -27,6 +32,7 @@ public class Configuration {
 				String line = scanner.nextLine();
 				
 				if (!line.startsWith("#")){
+					log4j.info("1.1.1 Configuration Entry Line: " + line);
 					rawLogLines.add(line);
 				}
 				
@@ -78,9 +84,15 @@ public class Configuration {
 		for (String loc : logFilesPaths) {
 			addToAllLogFiles(loc, Config.FILE, Config.ERROR, Config.ONE_TIME_READ, Config.SEPARATOR);
 		}	
-	
 
-}
+			Location = fixLocation(Location);
+			log4j.info("1.3.1 Adding: " + Location);
+			addToAllLogFiles(Location, DirectoryOrFile, Label, Type, Separator);
+		}
+		
+		
+		
+	}
 
 /**
  * 

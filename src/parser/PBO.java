@@ -52,7 +52,17 @@ public class PBO {
 		checkForRequestInfo(completeErrorStack);
 		checkForRequestParam(completeErrorStack);
 		
+		makeMsgHash();
+		
 		return errorObject;
+	}
+
+	private void makeMsgHash() {
+
+		// Is created from Msg
+		
+		errorObject.setMsgHash( Integer.toString( errorObject.getMsg().hashCode()));
+		
 	}
 
 	private void checkForRequestParam(ArrayList<String> completeErrorStack) {
@@ -115,7 +125,7 @@ public class PBO {
 //		System.out.print(message);
 		
 		for (String s : tempSplit){
-//			System.out.print(" - " + s);
+			System.out.print(" - " + s);
 		}
 		
 //		System.out.println();
@@ -173,10 +183,15 @@ public class PBO {
 					case "Remote Address":
 						tempReqInf.setRemoteAddress(tempSplit[1].trim());
 						break;
+						
+					case "Remote User":
+						tempReqInf.setRemoteUser(tempSplit[1].trim());
+						break;
 					
 					default:
 						String message = "Unexpected Request Information";
 						printTempSplitContains(message,tempSplit);
+						break;
 					
 					}
 					
@@ -278,15 +293,15 @@ public class PBO {
 		
 		String tempLine = new String();
 		
+		String forHashFromStack = new String();
+		
 		tempLine = completeErrorStack.get(1);
 		
 		if(!tempLine.startsWith("\tat")){
 			return;
 		}
 		
-		ArrayList<String> SB = new ArrayList<String>();
-		
-		SB.add(tempLine);
+		forHashFromStack += tempLine;
 		
 		for(int i=2; i<completeErrorStack.size(); i++){
 			
@@ -295,13 +310,28 @@ public class PBO {
 			if(tempLine.isEmpty()){
 				break;
 			}else{
-				SB.add(tempLine);
+				forHashFromStack += RemoveContentInBrackets(tempLine);
 			}
 			
 		}
 		
-		errorObject.setStackTrace(SB);
+		int theHash = forHashFromStack.hashCode();
 		
+		errorObject.setErrorStackHash(Integer.toString(theHash));
+		
+		errorObject.setStackTrace(forHashFromStack);
+		
+	}
+
+	private String RemoveContentInBrackets(String tempLine) {
+
+		String toReturn = tempLine;
+		
+		if(tempLine.contains("[")){
+			toReturn = tempLine.replaceAll("\\[.*]", "[]");
+		}
+				
+		return toReturn;
 	}
 
 	private void splitFirstErrorLine(String firstErrorLine) {
