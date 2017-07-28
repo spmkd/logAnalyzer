@@ -23,37 +23,13 @@
 #C:\Users\stojanp\Documents\MajIssues\error-10.48.2.15-ES1-appserver0-2015-11-11.log,F,Error Log,O,[
 #C:\Users\stojanp\Documents\MajIssues\error-10.48.2.15-ES1-appserver1-2015-11-11.log,F,Error Log,O,[
 #C:\Users\stojanp\Documents\MajIssues\error-10.48.2.15-ES1-appserver2-2015-11-11.log,F,Error Log,O,[
-C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-20.log,F,Error Log,O,[
-C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-21.log,F,Error Log,O,[
-C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-22.log,F,Error Log,O,[
-C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-23.log,F,Error Log,O,[
-C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-24.log,F,Error Log,O,[
-C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-01.log,F,Error Log,O,[
-C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-02.log,F,Error Log,O,[
-C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-03.log,F,Error Log,O,[
-C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-04.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-05.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-06.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-07.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-08.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-09.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-10.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-11.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-12.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-13.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-14.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-15.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-16.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-17.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-18.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-19.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-20.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-21.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-22.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-23.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-24.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-25.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-26.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-27.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-28.log,F,Error Log,O,[
-#C:\Users\stojan.petrovski\OneDrive - Accenture\Documents\GitHub\logAnalyzer\testFiles\dbk\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-06-29.log,F,Error Log,O,[
+#D:\TEMP\TempFiles\justOneError.log,F,Error Log,O,[
+D:\TEMP\TempFiles\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-21.log,F,Error Log,O,[
+D:\TEMP\TempFiles\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-22.log,F,Error Log,O,[
+D:\TEMP\TempFiles\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-23.log,F,Error Log,O,[
+D:\TEMP\TempFiles\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-24.log,F,Error Log,O,[
+D:\TEMP\TempFiles\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-25.log,F,Error Log,O,[
+D:\TEMP\TempFiles\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-26.log,F,Error Log,O,[
+D:\TEMP\TempFiles\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-27.log,F,Error Log,O,[
+D:\TEMP\TempFiles\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-28.log,F,Error Log,O,[
+D:\TEMP\TempFiles\error-dbkecmprapp11.5g4k.sys.carrenza.net-ES2-appserver0-2017-03-29.log,F,Error Log,O,[

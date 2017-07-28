@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import configuration.DatabaseConfiguration;
+
 public class checkDBConnection {
 	
     public static Connection con = null;
@@ -18,9 +20,9 @@ public class checkDBConnection {
 
 
 
-        String url = "jdbc:mysql://localhost:3306/testdb";
-        String user = "testuser";
-        String password = "test623";
+        String url = DatabaseConfiguration.getUrl();
+        String user = DatabaseConfiguration.getUser();
+        String password = DatabaseConfiguration.getPassword();
 
         try {
             con = DriverManager.getConnection(url, user, password);

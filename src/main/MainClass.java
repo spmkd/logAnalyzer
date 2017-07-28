@@ -1,6 +1,7 @@
 package main;
 
 import configuration.Configuration;
+import configuration.DatabaseConfiguration;
 import configuration.Log;
 import readers.ApplicationReader;
 import org.apache.logging.log4j.Logger; 
@@ -31,10 +32,13 @@ public class MainClass {
 	
 	private void initialize(){
 
-		log4j.info("1.1 Read Configuration File...");
+		log4j.info("1.1 Read Log Configuration File...");
 		Configuration.readConfigurationFile();
 		
-		log4j.info("1.2 Put all configuration data into classes...");
+		log4j.info("1.2 Read Database Connection Details...");
+		DatabaseConfiguration.ReadConfigurationFile();
+		
+		log4j.info("1.3 Put all configuration data into classes...");
 		Configuration.fillAllLogfiles();
 		
 	}

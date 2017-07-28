@@ -74,7 +74,7 @@ public class Configuration {
 			Separator = separated[4].charAt(0);
 
 			Location = fixLocation(Location);
-			log4j.info("1.2.1 Adding: " + Location);
+			log4j.info("1.3.1 Adding: " + Location);
 			addToAllLogFiles(Location, DirectoryOrFile, Label, Type, Separator);
 		}
 		
