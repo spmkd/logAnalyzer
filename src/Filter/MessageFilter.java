@@ -56,10 +56,4 @@ public class MessageFilter {
 		return errorMessage;
 	}
 	
-	private static int[] countOpenBrackets(){
-		
-		
-		
-		return null;
-	}
 }
