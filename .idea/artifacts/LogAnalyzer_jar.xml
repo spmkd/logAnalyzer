@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="LogAnalyzer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/LogAnalyzer_jar</output-path>
+    <root id="archive" name="LogAnalyzer.jar">
+      <element id="module-output" name="LogAnalyzer" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j/log4j-api-2.8.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j/log4j-core-2.8.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j/log4j-1.2.17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mysql/mysql-connector-java-5.1.36.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
